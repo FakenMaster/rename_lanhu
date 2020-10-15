@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
+import 'package:filepicker_windows/filepicker_windows.dart';
 import 'package:flutter/material.dart';
+import 'package:filepicker_windows/filepicker_windows.dart'
+    as filepicker_windows;
 
 void main() {
   runApp(MyApp());
@@ -15,7 +20,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: DefaultTextStyle(
+          style: TextStyle(
+            fontSize: 30,
+          ),
+          child: MyHomePage(title: 'Flutter Demo Home Page')),
     );
   }
 }
@@ -38,23 +47,40 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        children: [
-          RaisedButton(
-            onPressed: () async {
-              sourcePath = await filePickerCross();
-              setState(() {});
-            },
-            child: Text('来源路径：${sourcePath ?? ''}'),
-          ),
-          RaisedButton(
-            onPressed: () async {
-              destinationPath = await filePickerCross();
-              setState(() {});
-            },
-            child: Text('目标路径：${destinationPath ?? ''}'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RaisedButton(
+              onPressed: () async {
+                String path = await filePickerWindows();
+                if (path == null) return;
+                setState(() {
+                  sourcePath = path;
+                });
+              },
+              child: Text(
+                '来源路径：${sourcePath ?? ''}',
+                style: DefaultTextStyle.of(context).style,
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            RaisedButton(
+              onPressed: () async {
+                String path = await filePickerWindows();
+                if (path == null) return;
+                setState(() {
+                  destinationPath = path;
+                });
+              },
+              child: Text('目标路径：${destinationPath ?? ''}',
+                  style: DefaultTextStyle.of(context).style),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -73,5 +99,11 @@ class _MyHomePageState extends State<MyHomePage> {
       return result.path;
     }
     return null;
+  }
+
+  Future<String> filePickerWindows() async {
+    OpenFilePicker openFilePicker = filepicker_windows.OpenFilePicker();
+    File file = openFilePicker.getFile();
+    return file?.path;
   }
 }
