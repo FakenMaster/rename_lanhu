@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
@@ -6,6 +5,7 @@ import 'package:filepicker_windows/filepicker_windows.dart';
 import 'package:flutter/material.dart';
 import 'package:filepicker_windows/filepicker_windows.dart'
     as filepicker_windows;
+import 'package:stringx/stringx.dart';
 
 void main() {
   runApp(MyApp());
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(
               onPressed: () async {
                 String path = await filePicker();
-                if (path == null) return;
+                if (path.isNullOrEmpty()) return;
                 setState(() {
                   sourcePath = path;
                 });
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(
               onPressed: () async {
                 String path = await filePicker();
-                if (path == null) return;
+                if (path.isNullOrEmpty()) return;
                 setState(() {
                   destinationPath = path;
                 });
@@ -87,10 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<String> filePicker() async {
     FilePickerResult result = await FilePicker.platform.pickFiles();
-    print(result);
-    // if (result != null) {
-    //   return result.files.single.path;
-    // }
+    if (result != null) {
+      return result.files.single.path;
+    }
     return null;
   }
 
