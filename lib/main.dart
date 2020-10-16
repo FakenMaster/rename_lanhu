@@ -1,7 +1,7 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:filepicker_windows/filepicker_windows.dart';
 import 'package:flutter/material.dart';
 import 'package:filepicker_windows/filepicker_windows.dart'
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             RaisedButton(
               onPressed: () async {
-                String path = await filePickerWindows();
+                String path = await filePicker();
                 if (path == null) return;
                 setState(() {
                   sourcePath = path;
@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             RaisedButton(
               onPressed: () async {
-                String path = await filePickerWindows();
+                String path = await filePicker();
                 if (path == null) return;
                 setState(() {
                   destinationPath = path;
@@ -87,17 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<String> filePicker() async {
     FilePickerResult result = await FilePicker.platform.pickFiles();
-    if (result != null) {
-      return result.files.single.path;
-    }
-    return null;
-  }
-
-  Future<String> filePickerCross() async {
-    FilePickerCross result = await FilePickerCross.importFromStorage();
-    if (result != null) {
-      return result.path;
-    }
+    print(result);
+    // if (result != null) {
+    //   return result.files.single.path;
+    // }
     return null;
   }
 
