@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:filepicker_windows/filepicker_windows.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:filepicker_windows/filepicker_windows.dart'
@@ -71,6 +70,7 @@ class _HomePageState extends State<HomePage> {
           return ModalProgressHUD(
             inAsyncCall: snapshot.data == true,
             dismissible: false,
+            opacity: 0.5,
             child: Scaffold(
               appBar: AppBar(
                 title: Text(widget.title),
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   RaisedButton.icon(
                                     onPressed: () async {
-                                      String path = await filePicker();
+                                      String path = await folderPicker();
                                       if (path.notNullAndEmpty()) {
                                         sourcePathController.text = path;
                                         sourcePath.add(path);
@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   RaisedButton.icon(
                                     onPressed: () async {
-                                      String path = await filePicker();
+                                      String path = await folderPicker();
                                       if (path.notNullAndEmpty()) {
                                         destinationPathController.text = path;
                                         destinationPath.add(path);
@@ -226,12 +226,15 @@ class _HomePageState extends State<HomePage> {
     return true;
   }
 
+  Future<String> folderPicker() async {
+    return await FilePicker.platform.getDirectoryPath();
+  }
+
   Future<String> filePicker() async {
     FilePickerResult result = await FilePicker.platform.pickFiles();
     if (result != null) {
       return result.files.single.path;
     }
-    // showOpenPanel();
     return null;
   }
 
@@ -266,10 +269,15 @@ class _HomePageState extends State<HomePage> {
           fileName +
           extension;
 
+      //创建新文件
       File file = File(destinationFilePath);
-      if (file.existsSync()) file.deleteSync();
-
+      if (file.existsSync()) {
+        file.deleteSync();
+      }
       file.createSync(recursive: true);
+
+      //复制内容到新文件
+      File(path).copySync(destinationFilePath);
     }
     loading.add(false);
     Flushbar(
@@ -279,7 +287,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<String> filePickerWindows() async {
-    OpenFilePicker openFilePicker = filepicker_windows.OpenFilePicker();
+    filepicker_windows.OpenFilePicker openFilePicker =
+        filepicker_windows.OpenFilePicker();
     File file = openFilePicker.getFile();
     return file?.path;
   }
