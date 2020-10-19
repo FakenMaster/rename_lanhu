@@ -79,6 +79,7 @@ class _HomePageState extends State<HomePage> {
                         FolderChooseWidget(
                           title: '目标路径：',
                           onChange: destinationPath.add,
+                          source: false,
                         ),
                         SizedBox(
                           height: 40,

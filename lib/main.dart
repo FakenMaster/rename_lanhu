@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:rename_lanhu/infrasture/dependency_injection/injector.dart';
 
 import 'home_page.dart';
 
 void main() {
+  configureDependencies();
   runApp(MyApp());
 }
 
