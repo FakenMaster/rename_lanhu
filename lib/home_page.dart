@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:filepicker_windows/filepicker_windows.dart'
     as filepicker_windows;
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:rename_lanhu/folder_choose_widget.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stringx/stringx.dart';
 import 'package:time/time.dart';
@@ -26,24 +27,12 @@ class _HomePageState extends State<HomePage> {
   BehaviorSubject<bool> renameSubject;
   PublishSubject<bool> loading;
 
-  TextEditingController sourcePathController;
-  TextEditingController destinationPathController;
-
   @override
   void initState() {
     super.initState();
     sourcePath = BehaviorSubject();
     destinationPath = BehaviorSubject();
     loading = PublishSubject();
-
-    sourcePathController = TextEditingController()
-      ..addListener(() {
-        sourcePath.add(sourcePathController.text);
-      });
-    destinationPathController = TextEditingController()
-      ..addListener(() {
-        destinationPath.add(destinationPathController.text);
-      });
 
     renameSubject = BehaviorSubject.seeded(false);
     Rx.combineLatest2<String, String, bool>(sourcePath, destinationPath,
@@ -57,8 +46,6 @@ class _HomePageState extends State<HomePage> {
     sourcePath.close();
     destinationPath.close();
     renameSubject.close();
-    sourcePathController.dispose();
-    destinationPathController.dispose();
     super.dispose();
   }
 
@@ -82,77 +69,17 @@ class _HomePageState extends State<HomePage> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        StreamBuilder<String>(
-                            stream: sourcePath,
-                            builder: (context, snapshot) {
-                              return Row(
-                                children: [
-                                  Text(
-                                    '来源路径：',
-                                    style: DefaultTextStyle.of(context).style,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Flexible(
-                                    child: TextField(
-                                      controller: sourcePathController,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  RaisedButton.icon(
-                                    onPressed: () async {
-                                      String path = await folderPicker();
-                                      if (path.notNullAndEmpty()) {
-                                        sourcePathController.text = path;
-                                        sourcePath.add(path);
-                                      }
-                                    },
-                                    icon: Icon(Icons.more_horiz),
-                                    label: Text('选择文件夹'),
-                                  )
-                                ],
-                              );
-                            }),
+                        FolderChooseWidget(
+                          title: '来源路径：',
+                          onChange: sourcePath.add,
+                        ),
                         SizedBox(
                           height: 40,
                         ),
-                        StreamBuilder<String>(
-                            stream: destinationPath,
-                            builder: (context, snapshot) {
-                              return Row(
-                                children: [
-                                  Text(
-                                    '目标路径：',
-                                    style: DefaultTextStyle.of(context).style,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Flexible(
-                                    child: TextField(
-                                      controller: destinationPathController,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  RaisedButton.icon(
-                                    onPressed: () async {
-                                      String path = await folderPicker();
-                                      if (path.notNullAndEmpty()) {
-                                        destinationPathController.text = path;
-                                        destinationPath.add(path);
-                                      }
-                                    },
-                                    icon: Icon(Icons.more_horiz),
-                                    label: Text('选择文件夹'),
-                                  )
-                                ],
-                              );
-                            }),
+                        FolderChooseWidget(
+                          title: '目标路径：',
+                          onChange: destinationPath.add,
+                        ),
                         SizedBox(
                           height: 40,
                         ),
@@ -226,10 +153,6 @@ class _HomePageState extends State<HomePage> {
     return true;
   }
 
-  Future<String> folderPicker() async {
-    return await FilePicker.platform.getDirectoryPath();
-  }
-
   Future<String> filePicker() async {
     FilePickerResult result = await FilePicker.platform.pickFiles();
     if (result != null) {
@@ -247,7 +170,6 @@ class _HomePageState extends State<HomePage> {
         return;
       }
 
-      // String dirName = package_path.dirname(path);
       String extension = package_path.extension(path);
       String nameWithoutExtension = package_path.basenameWithoutExtension(path);
       String fileName = nameWithoutExtension;
