@@ -11,3 +11,5 @@
 ## 5. 根据已选目录，点击选择文件夹按钮时，自动导航到相应目录
 
 ## 6. 保存上次选择的目录到本地存储，使用SharedPreference ✅
+
+### 问题：go-flutter-desktop是怎么实现多桌面平台的，不再options.go中配置，就算已经实现不同平台的platform_channel,还是会报错，这个如果碰到插件没有在go-flutter-desktop中实现怎么办，会出错吗?
