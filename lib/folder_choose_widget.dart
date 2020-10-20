@@ -35,13 +35,12 @@ class _FolderChooseWidgetState extends State<FolderChooseWidget> {
     super.initState();
     final spKey = widget.source ? SOURCE_DIRECTORY : DESTINATION_DIRECTORY;
     _directoryStream = BehaviorSubject<String>.seeded('');
-    _controller = TextEditingController()
-      ..addListener(() {
+    _controller = TextEditingController(
+      text: getIt<SharedPreferences>().getString(spKey),
+    )..addListener(() {
         widget.onChange(_controller.text);
         _directoryStream.add(_controller.text);
       });
-
-    _controller.text = getIt<SharedPreferences>().getString(spKey) ?? '';
 
     // 500ms之内的最后值，并且与最开始发射的值不同才存入本地
     _directoryStream
@@ -49,10 +48,18 @@ class _FolderChooseWidgetState extends State<FolderChooseWidget> {
         .debounceTime(500.milliseconds)
         .distinct()
         .listen((String directory) {
-      getIt<SharedPreferences>().setString(SOURCE_DIRECTORY, directory);
-    }).onError((error) {
-      print(error);
+      // SharedPreferences.getInstance()
+      //     .then((sp) => sp.setString(spKey, directory));
+
+      getIt<SharedPreferences>().setString(spKey, directory);
     });
+
+    // getIt.getAsync<SharedPreferences>().then((sp) {
+    //   String directory = sp.getString(spKey);
+    //   if (directory.notNullAndEmpty()) {
+    //     _controller.text = directory;
+    //   }
+    // });
   }
 
   @override

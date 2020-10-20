@@ -3,8 +3,9 @@ import 'package:rename_lanhu/infrasture/dependency_injection/injector.dart';
 
 import 'home_page.dart';
 
-void main() {
-  configureDependencies();
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   runApp(MyApp());
 }
 

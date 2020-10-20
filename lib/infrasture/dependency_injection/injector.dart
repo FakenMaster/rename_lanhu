@@ -6,11 +6,12 @@ import 'injector.config.dart';
 
 final getIt = GetIt.instance;
 
-@InjectableInit()
-void configureDependencies() => $initGetIt(getIt);
+@injectableInit
+Future<void> configureDependencies() => $initGetIt(getIt);
 
 @module
 abstract class RegisterModule {
   @preResolve
+  @lazySingleton
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 }
