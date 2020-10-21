@@ -229,13 +229,6 @@ packages:
       url: "https://github.com/flutter/plugins.git"
     source: git
     version: "1.0.0"
-  filepicker_windows:
-    dependency: "direct main"
-    description:
-      name: filepicker_windows
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.0"
   fixnum:
     dependency: transitive
     description:
@@ -342,6 +335,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.4"
+  ionicons:
+    dependency: "direct main"
+    description:
+      name: ionicons
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.3"
   js:
     dependency: transitive
     description:
@@ -706,4 +706,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.10.0-110 <2.11.0"
-  flutter: ">=1.12.13+hotfix.5 <2.0.0"
+  flutter: ">=1.17.0 <2.0.0"

@@ -7,12 +7,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stringx/stringx.dart';
 import 'package:time/time.dart';
 
-class FolderChooseWidget extends StatefulWidget {
+class FolderSelectWidget extends StatefulWidget {
   final String title;
   final Function(String directory) onChange;
   //是否来源文件夹
   final bool source;
-  const FolderChooseWidget({
+  const FolderSelectWidget({
     Key key,
     @required this.title,
     @required this.onChange,
@@ -23,10 +23,10 @@ class FolderChooseWidget extends StatefulWidget {
         super(key: key);
 
   @override
-  _FolderChooseWidgetState createState() => _FolderChooseWidgetState();
+  _FolderSelectWidgetState createState() => _FolderSelectWidgetState();
 }
 
-class _FolderChooseWidgetState extends State<FolderChooseWidget> {
+class _FolderSelectWidgetState extends State<FolderSelectWidget> {
   TextEditingController _controller;
 
   BehaviorSubject<String> _directoryStream;
@@ -34,32 +34,21 @@ class _FolderChooseWidgetState extends State<FolderChooseWidget> {
   void initState() {
     super.initState();
     final spKey = widget.source ? SOURCE_DIRECTORY : DESTINATION_DIRECTORY;
-    _directoryStream = BehaviorSubject<String>.seeded('');
-    _controller = TextEditingController(
-      text: getIt<SharedPreferences>().getString(spKey),
-    )..addListener(() {
-        widget.onChange(_controller.text);
-        _directoryStream.add(_controller.text);
-      });
-
-    // 500ms之内的最后值，并且与最开始发射的值不同才存入本地
+    _directoryStream = BehaviorSubject<String>();
+    // 500ms之内的最后值，并且与最近的值不同才存入本地
     _directoryStream
         .where((String directory) => directory != null)
         .debounceTime(500.milliseconds)
         .distinct()
         .listen((String directory) {
-      // SharedPreferences.getInstance()
-      //     .then((sp) => sp.setString(spKey, directory));
-
       getIt<SharedPreferences>().setString(spKey, directory);
     });
-
-    // getIt.getAsync<SharedPreferences>().then((sp) {
-    //   String directory = sp.getString(spKey);
-    //   if (directory.notNullAndEmpty()) {
-    //     _controller.text = directory;
-    //   }
-    // });
+    _controller = TextEditingController()
+      ..addListener(() {
+        widget.onChange(_controller.text);
+        _directoryStream.add(_controller.text);
+      });
+    _controller.text = getIt<SharedPreferences>().getString(spKey);
   }
 
   @override
