@@ -12,4 +12,8 @@
 
 ## 6. 保存上次选择的目录到本地存储，使用SharedPreference ✅
 
+## 7. NavigationRail保存页面状态
+
+## 8. terminal实现 a.打开系统cmd b.实现本应用的主要功能：重命名下载的蓝湖文件
+
 ### 问题：go-flutter-desktop是怎么实现多桌面平台的，不再options.go中配置，就算已经实现不同平台的platform_channel,还是会报错，这个如果碰到插件没有在go-flutter-desktop中实现怎么办，会出错吗?
