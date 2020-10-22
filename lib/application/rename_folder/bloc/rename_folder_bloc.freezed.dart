@@ -14,8 +14,38 @@ class _$RenameFolderEventTearOff {
   const _$RenameFolderEventTearOff();
 
 // ignore: unused_element
-  _Started started() {
-    return const _Started();
+  _GetDirectory getDirectory(String spKey) {
+    return _GetDirectory(
+      spKey,
+    );
+  }
+
+// ignore: unused_element
+  _DirectoryChange directoryChange(String spKey, String directory) {
+    return _DirectoryChange(
+      spKey,
+      directory,
+    );
+  }
+
+// ignore: unused_element
+  _SaveDirectory saveDirectory(String spKey, String directory) {
+    return _SaveDirectory(
+      spKey,
+      directory,
+    );
+  }
+
+// ignore: unused_element
+  _SelectDirectory selectDirectory(String spKey) {
+    return _SelectDirectory(
+      spKey,
+    );
+  }
+
+// ignore: unused_element
+  _Rename rename() {
+    return const _Rename();
   }
 }
 
@@ -27,20 +57,36 @@ const $RenameFolderEvent = _$RenameFolderEventTearOff();
 mixin _$RenameFolderEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result started(),
+    @required Result getDirectory(String spKey),
+    @required Result directoryChange(String spKey, String directory),
+    @required Result saveDirectory(String spKey, String directory),
+    @required Result selectDirectory(String spKey),
+    @required Result rename(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result started(),
+    Result getDirectory(String spKey),
+    Result directoryChange(String spKey, String directory),
+    Result saveDirectory(String spKey, String directory),
+    Result selectDirectory(String spKey),
+    Result rename(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result started(_Started value),
+    @required Result getDirectory(_GetDirectory value),
+    @required Result directoryChange(_DirectoryChange value),
+    @required Result saveDirectory(_SaveDirectory value),
+    @required Result selectDirectory(_SelectDirectory value),
+    @required Result rename(_Rename value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result started(_Started value),
+    Result getDirectory(_GetDirectory value),
+    Result directoryChange(_DirectoryChange value),
+    Result saveDirectory(_SaveDirectory value),
+    Result selectDirectory(_SelectDirectory value),
+    Result rename(_Rename value),
     @required Result orElse(),
   });
 }
@@ -63,33 +109,591 @@ class _$RenameFolderEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
+abstract class _$GetDirectoryCopyWith<$Res> {
+  factory _$GetDirectoryCopyWith(
+          _GetDirectory value, $Res Function(_GetDirectory) then) =
+      __$GetDirectoryCopyWithImpl<$Res>;
+  $Res call({String spKey});
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res> extends _$RenameFolderEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
+class __$GetDirectoryCopyWithImpl<$Res>
+    extends _$RenameFolderEventCopyWithImpl<$Res>
+    implements _$GetDirectoryCopyWith<$Res> {
+  __$GetDirectoryCopyWithImpl(
+      _GetDirectory _value, $Res Function(_GetDirectory) _then)
+      : super(_value, (v) => _then(v as _GetDirectory));
 
   @override
-  _Started get _value => super._value as _Started;
+  _GetDirectory get _value => super._value as _GetDirectory;
+
+  @override
+  $Res call({
+    Object spKey = freezed,
+  }) {
+    return _then(_GetDirectory(
+      spKey == freezed ? _value.spKey : spKey as String,
+    ));
+  }
 }
 
 /// @nodoc
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_GetDirectory implements _GetDirectory {
+  const _$_GetDirectory(this.spKey) : assert(spKey != null);
+
+  @override
+  final String spKey;
 
   @override
   String toString() {
-    return 'RenameFolderEvent.started()';
+    return 'RenameFolderEvent.getDirectory(spKey: $spKey)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other is _GetDirectory &&
+            (identical(other.spKey, spKey) ||
+                const DeepCollectionEquality().equals(other.spKey, spKey)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(spKey);
+
+  @override
+  _$GetDirectoryCopyWith<_GetDirectory> get copyWith =>
+      __$GetDirectoryCopyWithImpl<_GetDirectory>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getDirectory(String spKey),
+    @required Result directoryChange(String spKey, String directory),
+    @required Result saveDirectory(String spKey, String directory),
+    @required Result selectDirectory(String spKey),
+    @required Result rename(),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return getDirectory(spKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getDirectory(String spKey),
+    Result directoryChange(String spKey, String directory),
+    Result saveDirectory(String spKey, String directory),
+    Result selectDirectory(String spKey),
+    Result rename(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getDirectory != null) {
+      return getDirectory(spKey);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getDirectory(_GetDirectory value),
+    @required Result directoryChange(_DirectoryChange value),
+    @required Result saveDirectory(_SaveDirectory value),
+    @required Result selectDirectory(_SelectDirectory value),
+    @required Result rename(_Rename value),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return getDirectory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getDirectory(_GetDirectory value),
+    Result directoryChange(_DirectoryChange value),
+    Result saveDirectory(_SaveDirectory value),
+    Result selectDirectory(_SelectDirectory value),
+    Result rename(_Rename value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getDirectory != null) {
+      return getDirectory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetDirectory implements RenameFolderEvent {
+  const factory _GetDirectory(String spKey) = _$_GetDirectory;
+
+  String get spKey;
+  _$GetDirectoryCopyWith<_GetDirectory> get copyWith;
+}
+
+/// @nodoc
+abstract class _$DirectoryChangeCopyWith<$Res> {
+  factory _$DirectoryChangeCopyWith(
+          _DirectoryChange value, $Res Function(_DirectoryChange) then) =
+      __$DirectoryChangeCopyWithImpl<$Res>;
+  $Res call({String spKey, String directory});
+}
+
+/// @nodoc
+class __$DirectoryChangeCopyWithImpl<$Res>
+    extends _$RenameFolderEventCopyWithImpl<$Res>
+    implements _$DirectoryChangeCopyWith<$Res> {
+  __$DirectoryChangeCopyWithImpl(
+      _DirectoryChange _value, $Res Function(_DirectoryChange) _then)
+      : super(_value, (v) => _then(v as _DirectoryChange));
+
+  @override
+  _DirectoryChange get _value => super._value as _DirectoryChange;
+
+  @override
+  $Res call({
+    Object spKey = freezed,
+    Object directory = freezed,
+  }) {
+    return _then(_DirectoryChange(
+      spKey == freezed ? _value.spKey : spKey as String,
+      directory == freezed ? _value.directory : directory as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_DirectoryChange implements _DirectoryChange {
+  const _$_DirectoryChange(this.spKey, this.directory)
+      : assert(spKey != null),
+        assert(directory != null);
+
+  @override
+  final String spKey;
+  @override
+  final String directory;
+
+  @override
+  String toString() {
+    return 'RenameFolderEvent.directoryChange(spKey: $spKey, directory: $directory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DirectoryChange &&
+            (identical(other.spKey, spKey) ||
+                const DeepCollectionEquality().equals(other.spKey, spKey)) &&
+            (identical(other.directory, directory) ||
+                const DeepCollectionEquality()
+                    .equals(other.directory, directory)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(spKey) ^
+      const DeepCollectionEquality().hash(directory);
+
+  @override
+  _$DirectoryChangeCopyWith<_DirectoryChange> get copyWith =>
+      __$DirectoryChangeCopyWithImpl<_DirectoryChange>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getDirectory(String spKey),
+    @required Result directoryChange(String spKey, String directory),
+    @required Result saveDirectory(String spKey, String directory),
+    @required Result selectDirectory(String spKey),
+    @required Result rename(),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return directoryChange(spKey, directory);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getDirectory(String spKey),
+    Result directoryChange(String spKey, String directory),
+    Result saveDirectory(String spKey, String directory),
+    Result selectDirectory(String spKey),
+    Result rename(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (directoryChange != null) {
+      return directoryChange(spKey, directory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getDirectory(_GetDirectory value),
+    @required Result directoryChange(_DirectoryChange value),
+    @required Result saveDirectory(_SaveDirectory value),
+    @required Result selectDirectory(_SelectDirectory value),
+    @required Result rename(_Rename value),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return directoryChange(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getDirectory(_GetDirectory value),
+    Result directoryChange(_DirectoryChange value),
+    Result saveDirectory(_SaveDirectory value),
+    Result selectDirectory(_SelectDirectory value),
+    Result rename(_Rename value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (directoryChange != null) {
+      return directoryChange(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DirectoryChange implements RenameFolderEvent {
+  const factory _DirectoryChange(String spKey, String directory) =
+      _$_DirectoryChange;
+
+  String get spKey;
+  String get directory;
+  _$DirectoryChangeCopyWith<_DirectoryChange> get copyWith;
+}
+
+/// @nodoc
+abstract class _$SaveDirectoryCopyWith<$Res> {
+  factory _$SaveDirectoryCopyWith(
+          _SaveDirectory value, $Res Function(_SaveDirectory) then) =
+      __$SaveDirectoryCopyWithImpl<$Res>;
+  $Res call({String spKey, String directory});
+}
+
+/// @nodoc
+class __$SaveDirectoryCopyWithImpl<$Res>
+    extends _$RenameFolderEventCopyWithImpl<$Res>
+    implements _$SaveDirectoryCopyWith<$Res> {
+  __$SaveDirectoryCopyWithImpl(
+      _SaveDirectory _value, $Res Function(_SaveDirectory) _then)
+      : super(_value, (v) => _then(v as _SaveDirectory));
+
+  @override
+  _SaveDirectory get _value => super._value as _SaveDirectory;
+
+  @override
+  $Res call({
+    Object spKey = freezed,
+    Object directory = freezed,
+  }) {
+    return _then(_SaveDirectory(
+      spKey == freezed ? _value.spKey : spKey as String,
+      directory == freezed ? _value.directory : directory as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_SaveDirectory implements _SaveDirectory {
+  const _$_SaveDirectory(this.spKey, this.directory)
+      : assert(spKey != null),
+        assert(directory != null);
+
+  @override
+  final String spKey;
+  @override
+  final String directory;
+
+  @override
+  String toString() {
+    return 'RenameFolderEvent.saveDirectory(spKey: $spKey, directory: $directory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SaveDirectory &&
+            (identical(other.spKey, spKey) ||
+                const DeepCollectionEquality().equals(other.spKey, spKey)) &&
+            (identical(other.directory, directory) ||
+                const DeepCollectionEquality()
+                    .equals(other.directory, directory)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(spKey) ^
+      const DeepCollectionEquality().hash(directory);
+
+  @override
+  _$SaveDirectoryCopyWith<_SaveDirectory> get copyWith =>
+      __$SaveDirectoryCopyWithImpl<_SaveDirectory>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getDirectory(String spKey),
+    @required Result directoryChange(String spKey, String directory),
+    @required Result saveDirectory(String spKey, String directory),
+    @required Result selectDirectory(String spKey),
+    @required Result rename(),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return saveDirectory(spKey, directory);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getDirectory(String spKey),
+    Result directoryChange(String spKey, String directory),
+    Result saveDirectory(String spKey, String directory),
+    Result selectDirectory(String spKey),
+    Result rename(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (saveDirectory != null) {
+      return saveDirectory(spKey, directory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getDirectory(_GetDirectory value),
+    @required Result directoryChange(_DirectoryChange value),
+    @required Result saveDirectory(_SaveDirectory value),
+    @required Result selectDirectory(_SelectDirectory value),
+    @required Result rename(_Rename value),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return saveDirectory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getDirectory(_GetDirectory value),
+    Result directoryChange(_DirectoryChange value),
+    Result saveDirectory(_SaveDirectory value),
+    Result selectDirectory(_SelectDirectory value),
+    Result rename(_Rename value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (saveDirectory != null) {
+      return saveDirectory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveDirectory implements RenameFolderEvent {
+  const factory _SaveDirectory(String spKey, String directory) =
+      _$_SaveDirectory;
+
+  String get spKey;
+  String get directory;
+  _$SaveDirectoryCopyWith<_SaveDirectory> get copyWith;
+}
+
+/// @nodoc
+abstract class _$SelectDirectoryCopyWith<$Res> {
+  factory _$SelectDirectoryCopyWith(
+          _SelectDirectory value, $Res Function(_SelectDirectory) then) =
+      __$SelectDirectoryCopyWithImpl<$Res>;
+  $Res call({String spKey});
+}
+
+/// @nodoc
+class __$SelectDirectoryCopyWithImpl<$Res>
+    extends _$RenameFolderEventCopyWithImpl<$Res>
+    implements _$SelectDirectoryCopyWith<$Res> {
+  __$SelectDirectoryCopyWithImpl(
+      _SelectDirectory _value, $Res Function(_SelectDirectory) _then)
+      : super(_value, (v) => _then(v as _SelectDirectory));
+
+  @override
+  _SelectDirectory get _value => super._value as _SelectDirectory;
+
+  @override
+  $Res call({
+    Object spKey = freezed,
+  }) {
+    return _then(_SelectDirectory(
+      spKey == freezed ? _value.spKey : spKey as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_SelectDirectory implements _SelectDirectory {
+  const _$_SelectDirectory(this.spKey) : assert(spKey != null);
+
+  @override
+  final String spKey;
+
+  @override
+  String toString() {
+    return 'RenameFolderEvent.selectDirectory(spKey: $spKey)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SelectDirectory &&
+            (identical(other.spKey, spKey) ||
+                const DeepCollectionEquality().equals(other.spKey, spKey)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(spKey);
+
+  @override
+  _$SelectDirectoryCopyWith<_SelectDirectory> get copyWith =>
+      __$SelectDirectoryCopyWithImpl<_SelectDirectory>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getDirectory(String spKey),
+    @required Result directoryChange(String spKey, String directory),
+    @required Result saveDirectory(String spKey, String directory),
+    @required Result selectDirectory(String spKey),
+    @required Result rename(),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return selectDirectory(spKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getDirectory(String spKey),
+    Result directoryChange(String spKey, String directory),
+    Result saveDirectory(String spKey, String directory),
+    Result selectDirectory(String spKey),
+    Result rename(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectDirectory != null) {
+      return selectDirectory(spKey);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getDirectory(_GetDirectory value),
+    @required Result directoryChange(_DirectoryChange value),
+    @required Result saveDirectory(_SaveDirectory value),
+    @required Result selectDirectory(_SelectDirectory value),
+    @required Result rename(_Rename value),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return selectDirectory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getDirectory(_GetDirectory value),
+    Result directoryChange(_DirectoryChange value),
+    Result saveDirectory(_SaveDirectory value),
+    Result selectDirectory(_SelectDirectory value),
+    Result rename(_Rename value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectDirectory != null) {
+      return selectDirectory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectDirectory implements RenameFolderEvent {
+  const factory _SelectDirectory(String spKey) = _$_SelectDirectory;
+
+  String get spKey;
+  _$SelectDirectoryCopyWith<_SelectDirectory> get copyWith;
+}
+
+/// @nodoc
+abstract class _$RenameCopyWith<$Res> {
+  factory _$RenameCopyWith(_Rename value, $Res Function(_Rename) then) =
+      __$RenameCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RenameCopyWithImpl<$Res> extends _$RenameFolderEventCopyWithImpl<$Res>
+    implements _$RenameCopyWith<$Res> {
+  __$RenameCopyWithImpl(_Rename _value, $Res Function(_Rename) _then)
+      : super(_value, (v) => _then(v as _Rename));
+
+  @override
+  _Rename get _value => super._value as _Rename;
+}
+
+/// @nodoc
+class _$_Rename implements _Rename {
+  const _$_Rename();
+
+  @override
+  String toString() {
+    return 'RenameFolderEvent.rename()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Rename);
   }
 
   @override
@@ -98,21 +702,33 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result started(),
+    @required Result getDirectory(String spKey),
+    @required Result directoryChange(String spKey, String directory),
+    @required Result saveDirectory(String spKey, String directory),
+    @required Result selectDirectory(String spKey),
+    @required Result rename(),
   }) {
-    assert(started != null);
-    return started();
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return rename();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result started(),
+    Result getDirectory(String spKey),
+    Result directoryChange(String spKey, String directory),
+    Result saveDirectory(String spKey, String directory),
+    Result selectDirectory(String spKey),
+    Result rename(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (started != null) {
-      return started();
+    if (rename != null) {
+      return rename();
     }
     return orElse();
   }
@@ -120,28 +736,40 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result started(_Started value),
+    @required Result getDirectory(_GetDirectory value),
+    @required Result directoryChange(_DirectoryChange value),
+    @required Result saveDirectory(_SaveDirectory value),
+    @required Result selectDirectory(_SelectDirectory value),
+    @required Result rename(_Rename value),
   }) {
-    assert(started != null);
-    return started(this);
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(rename != null);
+    return rename(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result started(_Started value),
+    Result getDirectory(_GetDirectory value),
+    Result directoryChange(_DirectoryChange value),
+    Result saveDirectory(_SaveDirectory value),
+    Result selectDirectory(_SelectDirectory value),
+    Result rename(_Rename value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (started != null) {
-      return started(this);
+    if (rename != null) {
+      return rename(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements RenameFolderEvent {
-  const factory _Started() = _$_Started;
+abstract class _Rename implements RenameFolderEvent {
+  const factory _Rename() = _$_Rename;
 }
 
 /// @nodoc
@@ -151,6 +779,48 @@ class _$RenameFolderStateTearOff {
 // ignore: unused_element
   _Initial initial() {
     return const _Initial();
+  }
+
+// ignore: unused_element
+  _DirectoryStorage directoryStorage(String spKey, String directory) {
+    return _DirectoryStorage(
+      spKey,
+      directory,
+    );
+  }
+
+// ignore: unused_element
+  _NoMatter noMatter() {
+    return const _NoMatter();
+  }
+
+// ignore: unused_element
+  _SelectDirectorySuccess selectDirectorySuccess(
+      String spKey, String directory) {
+    return _SelectDirectorySuccess(
+      spKey,
+      directory,
+    );
+  }
+
+// ignore: unused_element
+  _SelectDirectoryFail selectDirectoryFail(String spKey) {
+    return _SelectDirectoryFail(
+      spKey,
+    );
+  }
+
+// ignore: unused_element
+  _RenameFail renameFail(bool sourceFail, String faileMessage) {
+    return _RenameFail(
+      sourceFail,
+      faileMessage,
+    );
+  }
+
+// ignore: unused_element
+  _RenameSuccess renameSuccess() {
+    return const _RenameSuccess();
   }
 }
 
@@ -163,19 +833,43 @@ mixin _$RenameFolderState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result renameSuccess(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result renameFail(bool sourceFail, String faileMessage),
+    Result renameSuccess(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
     @required Result orElse(),
   });
 }
@@ -234,8 +928,20 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result renameSuccess(),
   }) {
     assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
     return initial();
   }
 
@@ -243,6 +949,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result renameFail(bool sourceFail, String faileMessage),
+    Result renameSuccess(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -256,8 +968,20 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
   }) {
     assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
     return initial(this);
   }
 
@@ -265,6 +989,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -277,4 +1007,866 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements RenameFolderState {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$DirectoryStorageCopyWith<$Res> {
+  factory _$DirectoryStorageCopyWith(
+          _DirectoryStorage value, $Res Function(_DirectoryStorage) then) =
+      __$DirectoryStorageCopyWithImpl<$Res>;
+  $Res call({String spKey, String directory});
+}
+
+/// @nodoc
+class __$DirectoryStorageCopyWithImpl<$Res>
+    extends _$RenameFolderStateCopyWithImpl<$Res>
+    implements _$DirectoryStorageCopyWith<$Res> {
+  __$DirectoryStorageCopyWithImpl(
+      _DirectoryStorage _value, $Res Function(_DirectoryStorage) _then)
+      : super(_value, (v) => _then(v as _DirectoryStorage));
+
+  @override
+  _DirectoryStorage get _value => super._value as _DirectoryStorage;
+
+  @override
+  $Res call({
+    Object spKey = freezed,
+    Object directory = freezed,
+  }) {
+    return _then(_DirectoryStorage(
+      spKey == freezed ? _value.spKey : spKey as String,
+      directory == freezed ? _value.directory : directory as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_DirectoryStorage implements _DirectoryStorage {
+  const _$_DirectoryStorage(this.spKey, this.directory)
+      : assert(spKey != null),
+        assert(directory != null);
+
+  @override
+  final String spKey;
+  @override
+  final String directory;
+
+  @override
+  String toString() {
+    return 'RenameFolderState.directoryStorage(spKey: $spKey, directory: $directory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DirectoryStorage &&
+            (identical(other.spKey, spKey) ||
+                const DeepCollectionEquality().equals(other.spKey, spKey)) &&
+            (identical(other.directory, directory) ||
+                const DeepCollectionEquality()
+                    .equals(other.directory, directory)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(spKey) ^
+      const DeepCollectionEquality().hash(directory);
+
+  @override
+  _$DirectoryStorageCopyWith<_DirectoryStorage> get copyWith =>
+      __$DirectoryStorageCopyWithImpl<_DirectoryStorage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result renameSuccess(),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return directoryStorage(spKey, directory);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result renameFail(bool sourceFail, String faileMessage),
+    Result renameSuccess(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (directoryStorage != null) {
+      return directoryStorage(spKey, directory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return directoryStorage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (directoryStorage != null) {
+      return directoryStorage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DirectoryStorage implements RenameFolderState {
+  const factory _DirectoryStorage(String spKey, String directory) =
+      _$_DirectoryStorage;
+
+  String get spKey;
+  String get directory;
+  _$DirectoryStorageCopyWith<_DirectoryStorage> get copyWith;
+}
+
+/// @nodoc
+abstract class _$NoMatterCopyWith<$Res> {
+  factory _$NoMatterCopyWith(_NoMatter value, $Res Function(_NoMatter) then) =
+      __$NoMatterCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NoMatterCopyWithImpl<$Res>
+    extends _$RenameFolderStateCopyWithImpl<$Res>
+    implements _$NoMatterCopyWith<$Res> {
+  __$NoMatterCopyWithImpl(_NoMatter _value, $Res Function(_NoMatter) _then)
+      : super(_value, (v) => _then(v as _NoMatter));
+
+  @override
+  _NoMatter get _value => super._value as _NoMatter;
+}
+
+/// @nodoc
+class _$_NoMatter implements _NoMatter {
+  const _$_NoMatter();
+
+  @override
+  String toString() {
+    return 'RenameFolderState.noMatter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NoMatter);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result renameSuccess(),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return noMatter();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result renameFail(bool sourceFail, String faileMessage),
+    Result renameSuccess(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noMatter != null) {
+      return noMatter();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return noMatter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noMatter != null) {
+      return noMatter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoMatter implements RenameFolderState {
+  const factory _NoMatter() = _$_NoMatter;
+}
+
+/// @nodoc
+abstract class _$SelectDirectorySuccessCopyWith<$Res> {
+  factory _$SelectDirectorySuccessCopyWith(_SelectDirectorySuccess value,
+          $Res Function(_SelectDirectorySuccess) then) =
+      __$SelectDirectorySuccessCopyWithImpl<$Res>;
+  $Res call({String spKey, String directory});
+}
+
+/// @nodoc
+class __$SelectDirectorySuccessCopyWithImpl<$Res>
+    extends _$RenameFolderStateCopyWithImpl<$Res>
+    implements _$SelectDirectorySuccessCopyWith<$Res> {
+  __$SelectDirectorySuccessCopyWithImpl(_SelectDirectorySuccess _value,
+      $Res Function(_SelectDirectorySuccess) _then)
+      : super(_value, (v) => _then(v as _SelectDirectorySuccess));
+
+  @override
+  _SelectDirectorySuccess get _value => super._value as _SelectDirectorySuccess;
+
+  @override
+  $Res call({
+    Object spKey = freezed,
+    Object directory = freezed,
+  }) {
+    return _then(_SelectDirectorySuccess(
+      spKey == freezed ? _value.spKey : spKey as String,
+      directory == freezed ? _value.directory : directory as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
+  const _$_SelectDirectorySuccess(this.spKey, this.directory)
+      : assert(spKey != null),
+        assert(directory != null);
+
+  @override
+  final String spKey;
+  @override
+  final String directory;
+
+  @override
+  String toString() {
+    return 'RenameFolderState.selectDirectorySuccess(spKey: $spKey, directory: $directory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SelectDirectorySuccess &&
+            (identical(other.spKey, spKey) ||
+                const DeepCollectionEquality().equals(other.spKey, spKey)) &&
+            (identical(other.directory, directory) ||
+                const DeepCollectionEquality()
+                    .equals(other.directory, directory)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(spKey) ^
+      const DeepCollectionEquality().hash(directory);
+
+  @override
+  _$SelectDirectorySuccessCopyWith<_SelectDirectorySuccess> get copyWith =>
+      __$SelectDirectorySuccessCopyWithImpl<_SelectDirectorySuccess>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result renameSuccess(),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return selectDirectorySuccess(spKey, directory);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result renameFail(bool sourceFail, String faileMessage),
+    Result renameSuccess(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectDirectorySuccess != null) {
+      return selectDirectorySuccess(spKey, directory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return selectDirectorySuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectDirectorySuccess != null) {
+      return selectDirectorySuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectDirectorySuccess implements RenameFolderState {
+  const factory _SelectDirectorySuccess(String spKey, String directory) =
+      _$_SelectDirectorySuccess;
+
+  String get spKey;
+  String get directory;
+  _$SelectDirectorySuccessCopyWith<_SelectDirectorySuccess> get copyWith;
+}
+
+/// @nodoc
+abstract class _$SelectDirectoryFailCopyWith<$Res> {
+  factory _$SelectDirectoryFailCopyWith(_SelectDirectoryFail value,
+          $Res Function(_SelectDirectoryFail) then) =
+      __$SelectDirectoryFailCopyWithImpl<$Res>;
+  $Res call({String spKey});
+}
+
+/// @nodoc
+class __$SelectDirectoryFailCopyWithImpl<$Res>
+    extends _$RenameFolderStateCopyWithImpl<$Res>
+    implements _$SelectDirectoryFailCopyWith<$Res> {
+  __$SelectDirectoryFailCopyWithImpl(
+      _SelectDirectoryFail _value, $Res Function(_SelectDirectoryFail) _then)
+      : super(_value, (v) => _then(v as _SelectDirectoryFail));
+
+  @override
+  _SelectDirectoryFail get _value => super._value as _SelectDirectoryFail;
+
+  @override
+  $Res call({
+    Object spKey = freezed,
+  }) {
+    return _then(_SelectDirectoryFail(
+      spKey == freezed ? _value.spKey : spKey as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_SelectDirectoryFail implements _SelectDirectoryFail {
+  const _$_SelectDirectoryFail(this.spKey) : assert(spKey != null);
+
+  @override
+  final String spKey;
+
+  @override
+  String toString() {
+    return 'RenameFolderState.selectDirectoryFail(spKey: $spKey)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SelectDirectoryFail &&
+            (identical(other.spKey, spKey) ||
+                const DeepCollectionEquality().equals(other.spKey, spKey)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(spKey);
+
+  @override
+  _$SelectDirectoryFailCopyWith<_SelectDirectoryFail> get copyWith =>
+      __$SelectDirectoryFailCopyWithImpl<_SelectDirectoryFail>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result renameSuccess(),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return selectDirectoryFail(spKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result renameFail(bool sourceFail, String faileMessage),
+    Result renameSuccess(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectDirectoryFail != null) {
+      return selectDirectoryFail(spKey);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return selectDirectoryFail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectDirectoryFail != null) {
+      return selectDirectoryFail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectDirectoryFail implements RenameFolderState {
+  const factory _SelectDirectoryFail(String spKey) = _$_SelectDirectoryFail;
+
+  String get spKey;
+  _$SelectDirectoryFailCopyWith<_SelectDirectoryFail> get copyWith;
+}
+
+/// @nodoc
+abstract class _$RenameFailCopyWith<$Res> {
+  factory _$RenameFailCopyWith(
+          _RenameFail value, $Res Function(_RenameFail) then) =
+      __$RenameFailCopyWithImpl<$Res>;
+  $Res call({bool sourceFail, String faileMessage});
+}
+
+/// @nodoc
+class __$RenameFailCopyWithImpl<$Res>
+    extends _$RenameFolderStateCopyWithImpl<$Res>
+    implements _$RenameFailCopyWith<$Res> {
+  __$RenameFailCopyWithImpl(
+      _RenameFail _value, $Res Function(_RenameFail) _then)
+      : super(_value, (v) => _then(v as _RenameFail));
+
+  @override
+  _RenameFail get _value => super._value as _RenameFail;
+
+  @override
+  $Res call({
+    Object sourceFail = freezed,
+    Object faileMessage = freezed,
+  }) {
+    return _then(_RenameFail(
+      sourceFail == freezed ? _value.sourceFail : sourceFail as bool,
+      faileMessage == freezed ? _value.faileMessage : faileMessage as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_RenameFail implements _RenameFail {
+  const _$_RenameFail(this.sourceFail, this.faileMessage)
+      : assert(sourceFail != null),
+        assert(faileMessage != null);
+
+  @override
+  final bool sourceFail;
+  @override
+  final String faileMessage;
+
+  @override
+  String toString() {
+    return 'RenameFolderState.renameFail(sourceFail: $sourceFail, faileMessage: $faileMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _RenameFail &&
+            (identical(other.sourceFail, sourceFail) ||
+                const DeepCollectionEquality()
+                    .equals(other.sourceFail, sourceFail)) &&
+            (identical(other.faileMessage, faileMessage) ||
+                const DeepCollectionEquality()
+                    .equals(other.faileMessage, faileMessage)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(sourceFail) ^
+      const DeepCollectionEquality().hash(faileMessage);
+
+  @override
+  _$RenameFailCopyWith<_RenameFail> get copyWith =>
+      __$RenameFailCopyWithImpl<_RenameFail>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result renameSuccess(),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return renameFail(sourceFail, faileMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result renameFail(bool sourceFail, String faileMessage),
+    Result renameSuccess(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (renameFail != null) {
+      return renameFail(sourceFail, faileMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return renameFail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (renameFail != null) {
+      return renameFail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RenameFail implements RenameFolderState {
+  const factory _RenameFail(bool sourceFail, String faileMessage) =
+      _$_RenameFail;
+
+  bool get sourceFail;
+  String get faileMessage;
+  _$RenameFailCopyWith<_RenameFail> get copyWith;
+}
+
+/// @nodoc
+abstract class _$RenameSuccessCopyWith<$Res> {
+  factory _$RenameSuccessCopyWith(
+          _RenameSuccess value, $Res Function(_RenameSuccess) then) =
+      __$RenameSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RenameSuccessCopyWithImpl<$Res>
+    extends _$RenameFolderStateCopyWithImpl<$Res>
+    implements _$RenameSuccessCopyWith<$Res> {
+  __$RenameSuccessCopyWithImpl(
+      _RenameSuccess _value, $Res Function(_RenameSuccess) _then)
+      : super(_value, (v) => _then(v as _RenameSuccess));
+
+  @override
+  _RenameSuccess get _value => super._value as _RenameSuccess;
+}
+
+/// @nodoc
+class _$_RenameSuccess implements _RenameSuccess {
+  const _$_RenameSuccess();
+
+  @override
+  String toString() {
+    return 'RenameFolderState.renameSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _RenameSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result renameSuccess(),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return renameSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result renameFail(bool sourceFail, String faileMessage),
+    Result renameSuccess(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (renameSuccess != null) {
+      return renameSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    return renameSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (renameSuccess != null) {
+      return renameSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RenameSuccess implements RenameFolderState {
+  const factory _RenameSuccess() = _$_RenameSuccess;
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stringx/stringx.dart';
@@ -95,7 +96,8 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
                                               showDialog(
                                                   context: context,
                                                   builder: (_) => AlertDialog(
-                                                        title: Text('确定开始转换吗?'),
+                                                        title:
+                                                            Text('确定开始转换吗?'),
                                                         actions: [
                                                           FlatButton(
                                                             onPressed: () =>
@@ -116,9 +118,12 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
                                             }
                                           }
                                         : null,
-                                    child: Text('根据尺寸后缀，分配到不同尺寸文件夹',style: TextStyle(
-                                      fontSize: 30,
-                                    ),),
+                                    child: Text(
+                                      '根据尺寸后缀，分配到不同尺寸文件夹',
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                      ),
+                                    ),
                                   ),
                                 );
                               }),
@@ -137,10 +142,6 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
     FileSystemEntityType fileSystemEntityType = FileSystemEntity.typeSync(path);
 
     if (fileSystemEntityType == FileSystemEntityType.notFound) {
-      Flushbar(
-        message: '${prefix}文件夹不存在',
-        duration: 3.seconds,
-      ).show(this.context);
       return false;
     }
     if (fileSystemEntityType != FileSystemEntityType.directory) {

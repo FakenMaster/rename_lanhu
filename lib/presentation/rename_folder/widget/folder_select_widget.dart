@@ -1,18 +1,16 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:rename_lanhu/infrasture/dependency_injection/injector.dart';
+import 'package:rename_lanhu/application/rename_folder/bloc/rename_folder_bloc.dart';
 import 'package:rename_lanhu/infrasture/util/sp_keys.dart';
-import 'package:rxdart/rxdart.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stringx/stringx.dart';
-import 'package:time/time.dart';
 
 class FolderSelectWidget extends StatefulWidget {
   final String title;
   final Function(String directory) onChange;
   //是否来源文件夹
   final bool source;
+  final String spKey;
   const FolderSelectWidget({
     Key key,
     @required this.title,
@@ -21,6 +19,7 @@ class FolderSelectWidget extends StatefulWidget {
   })  : assert(title != null),
         assert(onChange != null),
         assert(source != null),
+        spKey = source == true ? SOURCE_DIRECTORY : DESTINATION_DIRECTORY,
         super(key: key);
 
   @override
@@ -30,92 +29,95 @@ class FolderSelectWidget extends StatefulWidget {
 class _FolderSelectWidgetState extends State<FolderSelectWidget> {
   TextEditingController _controller;
 
-  BehaviorSubject<String> _directoryStream;
   @override
   void initState() {
     super.initState();
-    final spKey = widget.source ? SOURCE_DIRECTORY : DESTINATION_DIRECTORY;
-    _directoryStream = BehaviorSubject<String>();
-    // 500ms之内的最后值，并且与最近的值不同才存入本地
-    _directoryStream
-        .where((String directory) => directory != null)
-        .debounceTime(500.milliseconds)
-        .distinct()
-        .listen((String directory) {
-      getIt<SharedPreferences>().setString(spKey, directory);
-    });
+
     _controller = TextEditingController()
       ..addListener(() {
         widget.onChange(_controller.text);
-        _directoryStream.add(_controller.text);
+        context.bloc<RenameFolderBloc>().add(
+            RenameFolderEvent.directoryChange(widget.spKey, _controller.text));
       });
-    _controller.text = getIt<SharedPreferences>().getString(spKey);
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    _directoryStream.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          '${widget.title}',
-          style: TextStyle(
-            fontSize: 25,
-          ),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Flexible(
-          child: TextField(
-            controller: _controller,
-            style: TextStyle(
-              fontSize: 35,
-            ),
-            decoration: InputDecoration(
-              suffix: StreamBuilder<String>(
-                stream: _directoryStream,
-                builder: (context, snapshot) {
-                  return snapshot.data.isNullOrEmpty()
-                      ? SizedBox()
-                      : IconButton(
-                          onPressed: () async {
-                            _controller.text = '';
-                          },
-                          icon: Icon(
-                            Ionicons.close,
-                          ),
-                        );
-                },
+    return BlocListener<RenameFolderBloc, RenameFolderState>(
+        listener: (_, state) {
+          state.maybeMap(
+              directoryStorage: (state) {
+                if (state.spKey == widget.spKey) {
+                  _controller.text = state.directory;
+                }
+              },
+              selectDirectorySuccess: (state) {
+                if (state.spKey == widget.spKey) {
+                  _controller.text = state.directory;
+                }
+              },
+              orElse: () {});
+        },
+        child: Row(
+          children: [
+            Text(
+              '${widget.title}',
+              style: TextStyle(
+                fontSize: 25,
               ),
             ),
-          ),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        IconButton(
-          iconSize: 40,
-          onPressed: () async {
-            String path = await FilePicker.platform.getDirectoryPath();
-            if (path.notNullAndEmpty()) {
-              _controller.text = path;
-            }
-          },
-          icon: Icon(
-            Ionicons.ellipsis_horizontal,
-          ),
-        ),
-        SizedBox(
-          width: 20,
-        ),
-      ],
-    );
+            SizedBox(
+              width: 10,
+            ),
+            Flexible(
+              child: TextField(
+                controller: _controller,
+                style: TextStyle(
+                  fontSize: 35,
+                ),
+                decoration: InputDecoration(
+                  suffix: StreamBuilder<String>(
+                    stream: context
+                        .bloc<RenameFolderBloc>()
+                        .directoryStream(widget.spKey),
+                    builder: (context, snapshot) {
+                      return snapshot.data.isNullOrEmpty()
+                          ? SizedBox()
+                          : IconButton(
+                              onPressed: () async {
+                                _controller.text = '';
+                              },
+                              icon: Icon(
+                                Ionicons.close,
+                              ),
+                            );
+                    },
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            IconButton(
+              iconSize: 40,
+              onPressed: () => context
+                  .bloc<RenameFolderBloc>()
+                  .add(RenameFolderEvent.selectDirectory(widget.spKey)),
+              icon: Icon(
+                Ionicons.ellipsis_horizontal,
+              ),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+          ],
+        ));
   }
 }

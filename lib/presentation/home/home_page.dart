@@ -6,6 +6,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:rename_lanhu/application/rename_folder/bloc/rename_folder_bloc.dart';
 import 'package:rename_lanhu/infrasture/dependency_injection/injector.dart';
 import 'package:rename_lanhu/presentation/rename_folder/rename_folder_page.dart';
+import 'package:rename_lanhu/presentation/terminal/terminal_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -64,7 +65,9 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: selectIndex == 0
                     ? RenameFolderPage()
-                    : Text('$selectIndex:${Random().nextInt(100)}'),
+                    : selectIndex == 2
+                        ? TerminalPage()
+                        : Text('$selectIndex:${Random().nextInt(100)}'),
               ),
             ],
           ),

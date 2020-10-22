@@ -1,2 +1,2 @@
-final SOURCE_DIRECTORY = "source_directory";
-final DESTINATION_DIRECTORY = "destination_directory";
+const SOURCE_DIRECTORY = "source_directory";
+const DESTINATION_DIRECTORY = "destination_directory";
