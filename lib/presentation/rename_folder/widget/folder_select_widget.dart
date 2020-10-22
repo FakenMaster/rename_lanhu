@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:rename_lanhu/infrasture/dependency_injection/injector.dart';
 import 'package:rename_lanhu/infrasture/util/sp_keys.dart';
 import 'package:rxdart/rxdart.dart';
@@ -64,7 +65,9 @@ class _FolderSelectWidgetState extends State<FolderSelectWidget> {
       children: [
         Text(
           '${widget.title}',
-          style: DefaultTextStyle.of(context).style,
+          style: TextStyle(
+            fontSize: 25,
+          ),
         ),
         SizedBox(
           width: 10,
@@ -72,30 +75,45 @@ class _FolderSelectWidgetState extends State<FolderSelectWidget> {
         Flexible(
           child: TextField(
             controller: _controller,
+            style: TextStyle(
+              fontSize: 35,
+            ),
+            decoration: InputDecoration(
+              suffix: StreamBuilder<String>(
+                stream: _directoryStream,
+                builder: (context, snapshot) {
+                  return snapshot.data.isNullOrEmpty()
+                      ? SizedBox()
+                      : IconButton(
+                          onPressed: () async {
+                            _controller.text = '';
+                          },
+                          icon: Icon(
+                            Ionicons.close,
+                          ),
+                        );
+                },
+              ),
+            ),
           ),
         ),
         SizedBox(
           width: 10,
         ),
-        RaisedButton.icon(
+        IconButton(
+          iconSize: 40,
           onPressed: () async {
             String path = await FilePicker.platform.getDirectoryPath();
             if (path.notNullAndEmpty()) {
               _controller.text = path;
             }
           },
-          icon: Icon(Icons.more_horiz),
-          label: Text('选择文件夹'),
+          icon: Icon(
+            Ionicons.ellipsis_horizontal,
+          ),
         ),
         SizedBox(
-          width: 10,
-        ),
-        RaisedButton.icon(
-          onPressed: () async {
-            _controller.text = '';
-          },
-          icon: Icon(Icons.clear),
-          label: Text('清除'),
+          width: 20,
         ),
       ],
     );

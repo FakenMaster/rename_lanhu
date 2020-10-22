@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'injector.dart';
+import '../../application/rename_folder/bloc/rename_folder_bloc.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -21,7 +22,9 @@ Future<GetIt> $initGetIt(
   final gh = GetItHelper(get, environment, environmentFilter);
   final registerModule = _$RegisterModule();
   final sharedPreferences = await registerModule.prefs;
-  gh.factory<SharedPreferences>(() => sharedPreferences);
+  gh.lazySingleton<SharedPreferences>(() => sharedPreferences);
+  gh.factory<RenameFolderBloc>(
+      () => RenameFolderBloc(get<SharedPreferences>()));
   return get;
 }
 

@@ -56,9 +56,6 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
             dismissible: false,
             opacity: 0.5,
             child: Scaffold(
-              // appBar: AppBar(
-              //   title: Text(widget.title),
-              // ),
               body: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Stack(
@@ -94,7 +91,7 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
                                                     '来源', sourcePath.value) &&
                                                 checkValidDirectory('目标',
                                                     destinationPath.value)) {
-                                              /// 重命名、分配到目标文件夹
+                                              /// 重新分配到目标文件夹
                                               showDialog(
                                                   context: context,
                                                   builder: (_) => AlertDialog(
@@ -119,7 +116,9 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
                                             }
                                           }
                                         : null,
-                                    child: Text('重命名、分配到相应文件夹'),
+                                    child: Text('根据尺寸后缀，分配到不同尺寸文件夹',style: TextStyle(
+                                      fontSize: 30,
+                                    ),),
                                   ),
                                 );
                               }),
