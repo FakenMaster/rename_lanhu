@@ -532,7 +532,7 @@ packages:
     source: hosted
     version: "1.2.4"
   provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: provider
       url: "https://pub.flutter-io.cn"

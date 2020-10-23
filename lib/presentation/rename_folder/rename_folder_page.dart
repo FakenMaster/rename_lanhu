@@ -2,24 +2,36 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:rename_lanhu/application/rename_folder/bloc/rename_folder_bloc.dart';
+import 'package:rename_lanhu/application/rename_folder/cubit/rename_folder_cubit.dart';
 import 'package:time/time.dart';
 
 import 'widget/folder_select_widget.dart';
 
 class RenameFolderPage extends StatefulWidget {
-  RenameFolderPage({Key key}) : super(key: key);
+  const RenameFolderPage({Key key}) : super(key: key);
 
   @override
   _RenameFolderPageState createState() => _RenameFolderPageState();
 }
 
-class _RenameFolderPageState extends State<RenameFolderPage> {
+class _RenameFolderPageState extends State<RenameFolderPage> with AutomaticKeepAliveClientMixin{
   bool loading = false;
+  @override
+  void initState() {
+    super.initState();
+    print('RenameFolderPage初始化');
+  }
+
+  @override
+  void dispose() {
+    print('RenameFolderPage销毁');
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RenameFolderBloc, RenameFolderState>(
+    print('RenameFolderPage刷新');
+    return BlocListener<RenameFolderCubit, RenameFolderState>(
       child: ModalProgressHUD(
         inAsyncCall: loading,
         opacity: 0.5,
@@ -34,12 +46,14 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FolderSelectWidget(
+                        key: Key('source'),
                         title: '来源路径：',
                       ),
                       SizedBox(
                         height: 40,
                       ),
                       FolderSelectWidget(
+                        key: Key('destination'),
                         title: '目标路径：',
                         source: false,
                       ),
@@ -48,15 +62,15 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
                       ),
                       StreamBuilder<bool>(
                           stream:
-                              context.bloc<RenameFolderBloc>().renameStream,
+                              context.bloc<RenameFolderCubit>().renameStream,
                           builder: (context, snapshot) {
                             return Center(
                               child: RaisedButton(
                                 onPressed: snapshot.data == true
                                     ? () {
-                                        context.bloc<RenameFolderBloc>().add(
-                                            RenameFolderEvent
-                                                .validateDirectory());
+                                        context
+                                            .bloc<RenameFolderCubit>()
+                                            .validate();
                                       }
                                     : null,
                                 child: Text(
@@ -93,9 +107,7 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
                           FlatButton(
                             onPressed: () {
                               Navigator.pop(context);
-                              context
-                                  .bloc<RenameFolderBloc>()
-                                  .add(RenameFolderEvent.rename());
+                              context.bloc<RenameFolderCubit>().rename();
                             },
                             child: Text('确定'),
                           ),
@@ -125,4 +137,7 @@ class _RenameFolderPageState extends State<RenameFolderPage> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

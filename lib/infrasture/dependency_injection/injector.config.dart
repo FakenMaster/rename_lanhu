@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'injector.dart';
 import '../../application/rename_folder/bloc/rename_folder_bloc.dart';
+import '../../application/rename_folder/cubit/rename_folder_cubit.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -25,6 +26,8 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<SharedPreferences>(() => sharedPreferences);
   gh.factory<RenameFolderBloc>(
       () => RenameFolderBloc(get<SharedPreferences>()));
+  gh.factory<RenameFolderCubit>(
+      () => RenameFolderCubit(get<SharedPreferences>()));
   return get;
 }
 

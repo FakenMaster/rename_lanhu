@@ -5,11 +5,13 @@ import 'package:time/time.dart';
 
 /// 问题：当选择的index之后的内容不足以填满一屏时，滑动会先将index滑到顶部，再还原成填满一屏。效果很怪，如何fix？
 class TerminalPage extends StatefulWidget {
+  const TerminalPage({Key key}) : super(key: key);
   @override
   _TerminalPageState createState() => _TerminalPageState();
 }
 
-class _TerminalPageState extends State<TerminalPage> {
+class _TerminalPageState extends State<TerminalPage>
+    with AutomaticKeepAliveClientMixin {
   final datas = [
     "许多年之后，面对行刑队，奥雷良诺·布恩地亚上校将会回想起，他父亲带他去见识冰块的那个遥远的下午。那时的马贡多是一个有二十户人家的村落，用泥巴和芦苇盖的房屋就排列在一条河边。清澈的河水急急地流过，河心那些光滑、洁白的巨石，宛若史前动物留下的巨大的蛋。这块天地如此之新，许多东西尚未命名，提起它们时还须用手指指点点。每年到了三月光景，有一家衣衫褴褛的吉卜赛人家到村子附近来搭帐篷。他们吹笛击鼓，吵吵嚷嚷地向人们介绍最新的发明创造。最初他们带来了磁铁。一个胖乎乎的、留着拉碴胡子、长着一双雀爪般的手的吉卜赛人，自称叫墨尔基阿德斯，他把那玩意儿说成是马其顿的炼金术士们创造的第八奇迹，并当众作了一次惊人的表演。",
     "他拽着两块铁锭挨家串户地走着，大伙儿惊异地看到铁锅、铁盆、铁钳、小铁炉纷纷从原地落下，木板因铁钉和螺钉没命地挣脱出来而嘎嘎作响，甚至连那些遗失很久的东西，居然也从人们寻找多遍的地方钻了出来，成群结队地跟在墨尔基阿德斯那两块魔铁后面乱滚。“任何东西都有生命，”吉卜赛人声音嘶哑地喊道，“一切在于如何唤起它们的灵性。”霍塞·阿卡迪奥·布恩地亚是一位想象力极其丰富的人物。他的想象常常超越大自然的智慧，甚至比奇迹和魔术走得更远。他想，这毫无用处的发明倒可以用来开采地底下的黄金。墨尔基阿德斯是个老实人，他早就有言在先：“这玩意儿掏金子可不行。”可是，霍塞·阿卡迪奥·布恩地亚那时信不过吉卜赛人的诚实，他用一头骡子和一群山羊把那两块磁铁换了过来。他妻子乌苏拉·伊瓜朗饲养这些家畜，原是想用来振兴每况愈下的家业的，但她劝阻不了他。她丈夫回答说：“不用多久，咱们家的金子就会多得用来铺地的。”一连数月，他执意要证明自己的设想是正确的。他拖着两块铁锭，大声念着墨尔基阿德斯的咒语，一块一块地查遍了整个地区，连河底也没有放过。他唯一发掘出来的东西，是一副十五世纪的盔甲。盔甲的各部分已被氧化物锈住。敲起来里面空洞有声，活象一只装满石头的大葫芦。霍塞·阿卡迪奥·布恩地亚和他的远征队的四名壮士拆开盔甲，发现里面有一副石化了的骷髅，脖子上挂着一个小铜盒，盒内有一绺女人的头发。",
@@ -32,16 +34,19 @@ class _TerminalPageState extends State<TerminalPage> {
   @override
   void initState() {
     super.initState();
+    print('TerminalPage初始化');
     _controller = ItemScrollController();
   }
 
   @override
   void dispose() {
+    print('TerminalPage销毁');
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    print('TerminalPage刷新');
     return Scaffold(
       body: Column(
         children: [
@@ -76,4 +81,7 @@ class _TerminalPageState extends State<TerminalPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
