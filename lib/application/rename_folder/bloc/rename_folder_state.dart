@@ -10,7 +10,8 @@ abstract class RenameFolderState with _$RenameFolderState {
       String spKey, String directory) = _SelectDirectorySuccess;
   const factory RenameFolderState.selectDirectoryFail(String spKey) =
       _SelectDirectoryFail;
-
-  const factory RenameFolderState.renameFail(bool sourceFail, String faileMessage) = _RenameFail;
+  const factory RenameFolderState.valid() = _Valid;
+  const factory RenameFolderState.renameFail(String failMessage) = _RenameFail;
   const factory RenameFolderState.renameSuccess() = _RenameSuccess;
+  const factory RenameFolderState.renameProcessing() = _RenameProcessing;
 }

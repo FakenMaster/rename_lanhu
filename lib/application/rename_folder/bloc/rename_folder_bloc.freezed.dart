@@ -44,6 +44,11 @@ class _$RenameFolderEventTearOff {
   }
 
 // ignore: unused_element
+  _ValidateDirectory validateDirectory() {
+    return const _ValidateDirectory();
+  }
+
+// ignore: unused_element
   _Rename rename() {
     return const _Rename();
   }
@@ -61,6 +66,7 @@ mixin _$RenameFolderEvent {
     @required Result directoryChange(String spKey, String directory),
     @required Result saveDirectory(String spKey, String directory),
     @required Result selectDirectory(String spKey),
+    @required Result validateDirectory(),
     @required Result rename(),
   });
   @optionalTypeArgs
@@ -69,6 +75,7 @@ mixin _$RenameFolderEvent {
     Result directoryChange(String spKey, String directory),
     Result saveDirectory(String spKey, String directory),
     Result selectDirectory(String spKey),
+    Result validateDirectory(),
     Result rename(),
     @required Result orElse(),
   });
@@ -78,6 +85,7 @@ mixin _$RenameFolderEvent {
     @required Result directoryChange(_DirectoryChange value),
     @required Result saveDirectory(_SaveDirectory value),
     @required Result selectDirectory(_SelectDirectory value),
+    @required Result validateDirectory(_ValidateDirectory value),
     @required Result rename(_Rename value),
   });
   @optionalTypeArgs
@@ -86,6 +94,7 @@ mixin _$RenameFolderEvent {
     Result directoryChange(_DirectoryChange value),
     Result saveDirectory(_SaveDirectory value),
     Result selectDirectory(_SelectDirectory value),
+    Result validateDirectory(_ValidateDirectory value),
     Result rename(_Rename value),
     @required Result orElse(),
   });
@@ -172,12 +181,14 @@ class _$_GetDirectory implements _GetDirectory {
     @required Result directoryChange(String spKey, String directory),
     @required Result saveDirectory(String spKey, String directory),
     @required Result selectDirectory(String spKey),
+    @required Result validateDirectory(),
     @required Result rename(),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return getDirectory(spKey);
   }
@@ -189,6 +200,7 @@ class _$_GetDirectory implements _GetDirectory {
     Result directoryChange(String spKey, String directory),
     Result saveDirectory(String spKey, String directory),
     Result selectDirectory(String spKey),
+    Result validateDirectory(),
     Result rename(),
     @required Result orElse(),
   }) {
@@ -206,12 +218,14 @@ class _$_GetDirectory implements _GetDirectory {
     @required Result directoryChange(_DirectoryChange value),
     @required Result saveDirectory(_SaveDirectory value),
     @required Result selectDirectory(_SelectDirectory value),
+    @required Result validateDirectory(_ValidateDirectory value),
     @required Result rename(_Rename value),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return getDirectory(this);
   }
@@ -223,6 +237,7 @@ class _$_GetDirectory implements _GetDirectory {
     Result directoryChange(_DirectoryChange value),
     Result saveDirectory(_SaveDirectory value),
     Result selectDirectory(_SelectDirectory value),
+    Result validateDirectory(_ValidateDirectory value),
     Result rename(_Rename value),
     @required Result orElse(),
   }) {
@@ -316,12 +331,14 @@ class _$_DirectoryChange implements _DirectoryChange {
     @required Result directoryChange(String spKey, String directory),
     @required Result saveDirectory(String spKey, String directory),
     @required Result selectDirectory(String spKey),
+    @required Result validateDirectory(),
     @required Result rename(),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return directoryChange(spKey, directory);
   }
@@ -333,6 +350,7 @@ class _$_DirectoryChange implements _DirectoryChange {
     Result directoryChange(String spKey, String directory),
     Result saveDirectory(String spKey, String directory),
     Result selectDirectory(String spKey),
+    Result validateDirectory(),
     Result rename(),
     @required Result orElse(),
   }) {
@@ -350,12 +368,14 @@ class _$_DirectoryChange implements _DirectoryChange {
     @required Result directoryChange(_DirectoryChange value),
     @required Result saveDirectory(_SaveDirectory value),
     @required Result selectDirectory(_SelectDirectory value),
+    @required Result validateDirectory(_ValidateDirectory value),
     @required Result rename(_Rename value),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return directoryChange(this);
   }
@@ -367,6 +387,7 @@ class _$_DirectoryChange implements _DirectoryChange {
     Result directoryChange(_DirectoryChange value),
     Result saveDirectory(_SaveDirectory value),
     Result selectDirectory(_SelectDirectory value),
+    Result validateDirectory(_ValidateDirectory value),
     Result rename(_Rename value),
     @required Result orElse(),
   }) {
@@ -462,12 +483,14 @@ class _$_SaveDirectory implements _SaveDirectory {
     @required Result directoryChange(String spKey, String directory),
     @required Result saveDirectory(String spKey, String directory),
     @required Result selectDirectory(String spKey),
+    @required Result validateDirectory(),
     @required Result rename(),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return saveDirectory(spKey, directory);
   }
@@ -479,6 +502,7 @@ class _$_SaveDirectory implements _SaveDirectory {
     Result directoryChange(String spKey, String directory),
     Result saveDirectory(String spKey, String directory),
     Result selectDirectory(String spKey),
+    Result validateDirectory(),
     Result rename(),
     @required Result orElse(),
   }) {
@@ -496,12 +520,14 @@ class _$_SaveDirectory implements _SaveDirectory {
     @required Result directoryChange(_DirectoryChange value),
     @required Result saveDirectory(_SaveDirectory value),
     @required Result selectDirectory(_SelectDirectory value),
+    @required Result validateDirectory(_ValidateDirectory value),
     @required Result rename(_Rename value),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return saveDirectory(this);
   }
@@ -513,6 +539,7 @@ class _$_SaveDirectory implements _SaveDirectory {
     Result directoryChange(_DirectoryChange value),
     Result saveDirectory(_SaveDirectory value),
     Result selectDirectory(_SelectDirectory value),
+    Result validateDirectory(_ValidateDirectory value),
     Result rename(_Rename value),
     @required Result orElse(),
   }) {
@@ -597,12 +624,14 @@ class _$_SelectDirectory implements _SelectDirectory {
     @required Result directoryChange(String spKey, String directory),
     @required Result saveDirectory(String spKey, String directory),
     @required Result selectDirectory(String spKey),
+    @required Result validateDirectory(),
     @required Result rename(),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return selectDirectory(spKey);
   }
@@ -614,6 +643,7 @@ class _$_SelectDirectory implements _SelectDirectory {
     Result directoryChange(String spKey, String directory),
     Result saveDirectory(String spKey, String directory),
     Result selectDirectory(String spKey),
+    Result validateDirectory(),
     Result rename(),
     @required Result orElse(),
   }) {
@@ -631,12 +661,14 @@ class _$_SelectDirectory implements _SelectDirectory {
     @required Result directoryChange(_DirectoryChange value),
     @required Result saveDirectory(_SaveDirectory value),
     @required Result selectDirectory(_SelectDirectory value),
+    @required Result validateDirectory(_ValidateDirectory value),
     @required Result rename(_Rename value),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return selectDirectory(this);
   }
@@ -648,6 +680,7 @@ class _$_SelectDirectory implements _SelectDirectory {
     Result directoryChange(_DirectoryChange value),
     Result saveDirectory(_SaveDirectory value),
     Result selectDirectory(_SelectDirectory value),
+    Result validateDirectory(_ValidateDirectory value),
     Result rename(_Rename value),
     @required Result orElse(),
   }) {
@@ -664,6 +697,121 @@ abstract class _SelectDirectory implements RenameFolderEvent {
 
   String get spKey;
   _$SelectDirectoryCopyWith<_SelectDirectory> get copyWith;
+}
+
+/// @nodoc
+abstract class _$ValidateDirectoryCopyWith<$Res> {
+  factory _$ValidateDirectoryCopyWith(
+          _ValidateDirectory value, $Res Function(_ValidateDirectory) then) =
+      __$ValidateDirectoryCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ValidateDirectoryCopyWithImpl<$Res>
+    extends _$RenameFolderEventCopyWithImpl<$Res>
+    implements _$ValidateDirectoryCopyWith<$Res> {
+  __$ValidateDirectoryCopyWithImpl(
+      _ValidateDirectory _value, $Res Function(_ValidateDirectory) _then)
+      : super(_value, (v) => _then(v as _ValidateDirectory));
+
+  @override
+  _ValidateDirectory get _value => super._value as _ValidateDirectory;
+}
+
+/// @nodoc
+class _$_ValidateDirectory implements _ValidateDirectory {
+  const _$_ValidateDirectory();
+
+  @override
+  String toString() {
+    return 'RenameFolderEvent.validateDirectory()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _ValidateDirectory);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getDirectory(String spKey),
+    @required Result directoryChange(String spKey, String directory),
+    @required Result saveDirectory(String spKey, String directory),
+    @required Result selectDirectory(String spKey),
+    @required Result validateDirectory(),
+    @required Result rename(),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(validateDirectory != null);
+    assert(rename != null);
+    return validateDirectory();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getDirectory(String spKey),
+    Result directoryChange(String spKey, String directory),
+    Result saveDirectory(String spKey, String directory),
+    Result selectDirectory(String spKey),
+    Result validateDirectory(),
+    Result rename(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (validateDirectory != null) {
+      return validateDirectory();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getDirectory(_GetDirectory value),
+    @required Result directoryChange(_DirectoryChange value),
+    @required Result saveDirectory(_SaveDirectory value),
+    @required Result selectDirectory(_SelectDirectory value),
+    @required Result validateDirectory(_ValidateDirectory value),
+    @required Result rename(_Rename value),
+  }) {
+    assert(getDirectory != null);
+    assert(directoryChange != null);
+    assert(saveDirectory != null);
+    assert(selectDirectory != null);
+    assert(validateDirectory != null);
+    assert(rename != null);
+    return validateDirectory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getDirectory(_GetDirectory value),
+    Result directoryChange(_DirectoryChange value),
+    Result saveDirectory(_SaveDirectory value),
+    Result selectDirectory(_SelectDirectory value),
+    Result validateDirectory(_ValidateDirectory value),
+    Result rename(_Rename value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (validateDirectory != null) {
+      return validateDirectory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ValidateDirectory implements RenameFolderEvent {
+  const factory _ValidateDirectory() = _$_ValidateDirectory;
 }
 
 /// @nodoc
@@ -706,12 +854,14 @@ class _$_Rename implements _Rename {
     @required Result directoryChange(String spKey, String directory),
     @required Result saveDirectory(String spKey, String directory),
     @required Result selectDirectory(String spKey),
+    @required Result validateDirectory(),
     @required Result rename(),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return rename();
   }
@@ -723,6 +873,7 @@ class _$_Rename implements _Rename {
     Result directoryChange(String spKey, String directory),
     Result saveDirectory(String spKey, String directory),
     Result selectDirectory(String spKey),
+    Result validateDirectory(),
     Result rename(),
     @required Result orElse(),
   }) {
@@ -740,12 +891,14 @@ class _$_Rename implements _Rename {
     @required Result directoryChange(_DirectoryChange value),
     @required Result saveDirectory(_SaveDirectory value),
     @required Result selectDirectory(_SelectDirectory value),
+    @required Result validateDirectory(_ValidateDirectory value),
     @required Result rename(_Rename value),
   }) {
     assert(getDirectory != null);
     assert(directoryChange != null);
     assert(saveDirectory != null);
     assert(selectDirectory != null);
+    assert(validateDirectory != null);
     assert(rename != null);
     return rename(this);
   }
@@ -757,6 +910,7 @@ class _$_Rename implements _Rename {
     Result directoryChange(_DirectoryChange value),
     Result saveDirectory(_SaveDirectory value),
     Result selectDirectory(_SelectDirectory value),
+    Result validateDirectory(_ValidateDirectory value),
     Result rename(_Rename value),
     @required Result orElse(),
   }) {
@@ -811,16 +965,25 @@ class _$RenameFolderStateTearOff {
   }
 
 // ignore: unused_element
-  _RenameFail renameFail(bool sourceFail, String faileMessage) {
+  _Valid valid() {
+    return const _Valid();
+  }
+
+// ignore: unused_element
+  _RenameFail renameFail(String failMessage) {
     return _RenameFail(
-      sourceFail,
-      faileMessage,
+      failMessage,
     );
   }
 
 // ignore: unused_element
   _RenameSuccess renameSuccess() {
     return const _RenameSuccess();
+  }
+
+// ignore: unused_element
+  _RenameProcessing renameProcessing() {
+    return const _RenameProcessing();
   }
 }
 
@@ -837,8 +1000,10 @@ mixin _$RenameFolderState {
     @required Result noMatter(),
     @required Result selectDirectorySuccess(String spKey, String directory),
     @required Result selectDirectoryFail(String spKey),
-    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
     @required Result renameSuccess(),
+    @required Result renameProcessing(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -847,8 +1012,10 @@ mixin _$RenameFolderState {
     Result noMatter(),
     Result selectDirectorySuccess(String spKey, String directory),
     Result selectDirectoryFail(String spKey),
-    Result renameFail(bool sourceFail, String faileMessage),
+    Result valid(),
+    Result renameFail(String failMessage),
     Result renameSuccess(),
+    Result renameProcessing(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -858,8 +1025,10 @@ mixin _$RenameFolderState {
     @required Result noMatter(_NoMatter value),
     @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
     @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
     @required Result renameFail(_RenameFail value),
     @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -868,8 +1037,10 @@ mixin _$RenameFolderState {
     Result noMatter(_NoMatter value),
     Result selectDirectorySuccess(_SelectDirectorySuccess value),
     Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
     Result renameFail(_RenameFail value),
     Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
     @required Result orElse(),
   });
 }
@@ -932,16 +1103,20 @@ class _$_Initial implements _Initial {
     @required Result noMatter(),
     @required Result selectDirectorySuccess(String spKey, String directory),
     @required Result selectDirectoryFail(String spKey),
-    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
     @required Result renameSuccess(),
+    @required Result renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return initial();
   }
 
@@ -953,8 +1128,10 @@ class _$_Initial implements _Initial {
     Result noMatter(),
     Result selectDirectorySuccess(String spKey, String directory),
     Result selectDirectoryFail(String spKey),
-    Result renameFail(bool sourceFail, String faileMessage),
+    Result valid(),
+    Result renameFail(String failMessage),
     Result renameSuccess(),
+    Result renameProcessing(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -972,16 +1149,20 @@ class _$_Initial implements _Initial {
     @required Result noMatter(_NoMatter value),
     @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
     @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
     @required Result renameFail(_RenameFail value),
     @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return initial(this);
   }
 
@@ -993,8 +1174,10 @@ class _$_Initial implements _Initial {
     Result noMatter(_NoMatter value),
     Result selectDirectorySuccess(_SelectDirectorySuccess value),
     Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
     Result renameFail(_RenameFail value),
     Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1085,16 +1268,20 @@ class _$_DirectoryStorage implements _DirectoryStorage {
     @required Result noMatter(),
     @required Result selectDirectorySuccess(String spKey, String directory),
     @required Result selectDirectoryFail(String spKey),
-    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
     @required Result renameSuccess(),
+    @required Result renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return directoryStorage(spKey, directory);
   }
 
@@ -1106,8 +1293,10 @@ class _$_DirectoryStorage implements _DirectoryStorage {
     Result noMatter(),
     Result selectDirectorySuccess(String spKey, String directory),
     Result selectDirectoryFail(String spKey),
-    Result renameFail(bool sourceFail, String faileMessage),
+    Result valid(),
+    Result renameFail(String failMessage),
     Result renameSuccess(),
+    Result renameProcessing(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1125,16 +1314,20 @@ class _$_DirectoryStorage implements _DirectoryStorage {
     @required Result noMatter(_NoMatter value),
     @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
     @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
     @required Result renameFail(_RenameFail value),
     @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return directoryStorage(this);
   }
 
@@ -1146,8 +1339,10 @@ class _$_DirectoryStorage implements _DirectoryStorage {
     Result noMatter(_NoMatter value),
     Result selectDirectorySuccess(_SelectDirectorySuccess value),
     Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
     Result renameFail(_RenameFail value),
     Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1209,16 +1404,20 @@ class _$_NoMatter implements _NoMatter {
     @required Result noMatter(),
     @required Result selectDirectorySuccess(String spKey, String directory),
     @required Result selectDirectoryFail(String spKey),
-    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
     @required Result renameSuccess(),
+    @required Result renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return noMatter();
   }
 
@@ -1230,8 +1429,10 @@ class _$_NoMatter implements _NoMatter {
     Result noMatter(),
     Result selectDirectorySuccess(String spKey, String directory),
     Result selectDirectoryFail(String spKey),
-    Result renameFail(bool sourceFail, String faileMessage),
+    Result valid(),
+    Result renameFail(String failMessage),
     Result renameSuccess(),
+    Result renameProcessing(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1249,16 +1450,20 @@ class _$_NoMatter implements _NoMatter {
     @required Result noMatter(_NoMatter value),
     @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
     @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
     @required Result renameFail(_RenameFail value),
     @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return noMatter(this);
   }
 
@@ -1270,8 +1475,10 @@ class _$_NoMatter implements _NoMatter {
     Result noMatter(_NoMatter value),
     Result selectDirectorySuccess(_SelectDirectorySuccess value),
     Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
     Result renameFail(_RenameFail value),
     Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1363,16 +1570,20 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
     @required Result noMatter(),
     @required Result selectDirectorySuccess(String spKey, String directory),
     @required Result selectDirectoryFail(String spKey),
-    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
     @required Result renameSuccess(),
+    @required Result renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return selectDirectorySuccess(spKey, directory);
   }
 
@@ -1384,8 +1595,10 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
     Result noMatter(),
     Result selectDirectorySuccess(String spKey, String directory),
     Result selectDirectoryFail(String spKey),
-    Result renameFail(bool sourceFail, String faileMessage),
+    Result valid(),
+    Result renameFail(String failMessage),
     Result renameSuccess(),
+    Result renameProcessing(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1403,16 +1616,20 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
     @required Result noMatter(_NoMatter value),
     @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
     @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
     @required Result renameFail(_RenameFail value),
     @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return selectDirectorySuccess(this);
   }
 
@@ -1424,8 +1641,10 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
     Result noMatter(_NoMatter value),
     Result selectDirectorySuccess(_SelectDirectorySuccess value),
     Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
     Result renameFail(_RenameFail value),
     Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1511,16 +1730,20 @@ class _$_SelectDirectoryFail implements _SelectDirectoryFail {
     @required Result noMatter(),
     @required Result selectDirectorySuccess(String spKey, String directory),
     @required Result selectDirectoryFail(String spKey),
-    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
     @required Result renameSuccess(),
+    @required Result renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return selectDirectoryFail(spKey);
   }
 
@@ -1532,8 +1755,10 @@ class _$_SelectDirectoryFail implements _SelectDirectoryFail {
     Result noMatter(),
     Result selectDirectorySuccess(String spKey, String directory),
     Result selectDirectoryFail(String spKey),
-    Result renameFail(bool sourceFail, String faileMessage),
+    Result valid(),
+    Result renameFail(String failMessage),
     Result renameSuccess(),
+    Result renameProcessing(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1551,16 +1776,20 @@ class _$_SelectDirectoryFail implements _SelectDirectoryFail {
     @required Result noMatter(_NoMatter value),
     @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
     @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
     @required Result renameFail(_RenameFail value),
     @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return selectDirectoryFail(this);
   }
 
@@ -1572,8 +1801,10 @@ class _$_SelectDirectoryFail implements _SelectDirectoryFail {
     Result noMatter(_NoMatter value),
     Result selectDirectorySuccess(_SelectDirectorySuccess value),
     Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
     Result renameFail(_RenameFail value),
     Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1592,11 +1823,141 @@ abstract class _SelectDirectoryFail implements RenameFolderState {
 }
 
 /// @nodoc
+abstract class _$ValidCopyWith<$Res> {
+  factory _$ValidCopyWith(_Valid value, $Res Function(_Valid) then) =
+      __$ValidCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ValidCopyWithImpl<$Res> extends _$RenameFolderStateCopyWithImpl<$Res>
+    implements _$ValidCopyWith<$Res> {
+  __$ValidCopyWithImpl(_Valid _value, $Res Function(_Valid) _then)
+      : super(_value, (v) => _then(v as _Valid));
+
+  @override
+  _Valid get _value => super._value as _Valid;
+}
+
+/// @nodoc
+class _$_Valid implements _Valid {
+  const _$_Valid();
+
+  @override
+  String toString() {
+    return 'RenameFolderState.valid()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Valid);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
+    @required Result renameSuccess(),
+    @required Result renameProcessing(),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(valid != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    assert(renameProcessing != null);
+    return valid();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result valid(),
+    Result renameFail(String failMessage),
+    Result renameSuccess(),
+    Result renameProcessing(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (valid != null) {
+      return valid();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(valid != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    assert(renameProcessing != null);
+    return valid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (valid != null) {
+      return valid(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Valid implements RenameFolderState {
+  const factory _Valid() = _$_Valid;
+}
+
+/// @nodoc
 abstract class _$RenameFailCopyWith<$Res> {
   factory _$RenameFailCopyWith(
           _RenameFail value, $Res Function(_RenameFail) then) =
       __$RenameFailCopyWithImpl<$Res>;
-  $Res call({bool sourceFail, String faileMessage});
+  $Res call({String failMessage});
 }
 
 /// @nodoc
@@ -1612,49 +1973,38 @@ class __$RenameFailCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object sourceFail = freezed,
-    Object faileMessage = freezed,
+    Object failMessage = freezed,
   }) {
     return _then(_RenameFail(
-      sourceFail == freezed ? _value.sourceFail : sourceFail as bool,
-      faileMessage == freezed ? _value.faileMessage : faileMessage as String,
+      failMessage == freezed ? _value.failMessage : failMessage as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_RenameFail implements _RenameFail {
-  const _$_RenameFail(this.sourceFail, this.faileMessage)
-      : assert(sourceFail != null),
-        assert(faileMessage != null);
+  const _$_RenameFail(this.failMessage) : assert(failMessage != null);
 
   @override
-  final bool sourceFail;
-  @override
-  final String faileMessage;
+  final String failMessage;
 
   @override
   String toString() {
-    return 'RenameFolderState.renameFail(sourceFail: $sourceFail, faileMessage: $faileMessage)';
+    return 'RenameFolderState.renameFail(failMessage: $failMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RenameFail &&
-            (identical(other.sourceFail, sourceFail) ||
+            (identical(other.failMessage, failMessage) ||
                 const DeepCollectionEquality()
-                    .equals(other.sourceFail, sourceFail)) &&
-            (identical(other.faileMessage, faileMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.faileMessage, faileMessage)));
+                    .equals(other.failMessage, failMessage)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(sourceFail) ^
-      const DeepCollectionEquality().hash(faileMessage);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failMessage);
 
   @override
   _$RenameFailCopyWith<_RenameFail> get copyWith =>
@@ -1668,17 +2018,21 @@ class _$_RenameFail implements _RenameFail {
     @required Result noMatter(),
     @required Result selectDirectorySuccess(String spKey, String directory),
     @required Result selectDirectoryFail(String spKey),
-    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
     @required Result renameSuccess(),
+    @required Result renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
-    return renameFail(sourceFail, faileMessage);
+    assert(renameProcessing != null);
+    return renameFail(failMessage);
   }
 
   @override
@@ -1689,13 +2043,15 @@ class _$_RenameFail implements _RenameFail {
     Result noMatter(),
     Result selectDirectorySuccess(String spKey, String directory),
     Result selectDirectoryFail(String spKey),
-    Result renameFail(bool sourceFail, String faileMessage),
+    Result valid(),
+    Result renameFail(String failMessage),
     Result renameSuccess(),
+    Result renameProcessing(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (renameFail != null) {
-      return renameFail(sourceFail, faileMessage);
+      return renameFail(failMessage);
     }
     return orElse();
   }
@@ -1708,16 +2064,20 @@ class _$_RenameFail implements _RenameFail {
     @required Result noMatter(_NoMatter value),
     @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
     @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
     @required Result renameFail(_RenameFail value),
     @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return renameFail(this);
   }
 
@@ -1729,8 +2089,10 @@ class _$_RenameFail implements _RenameFail {
     Result noMatter(_NoMatter value),
     Result selectDirectorySuccess(_SelectDirectorySuccess value),
     Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
     Result renameFail(_RenameFail value),
     Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1742,11 +2104,9 @@ class _$_RenameFail implements _RenameFail {
 }
 
 abstract class _RenameFail implements RenameFolderState {
-  const factory _RenameFail(bool sourceFail, String faileMessage) =
-      _$_RenameFail;
+  const factory _RenameFail(String failMessage) = _$_RenameFail;
 
-  bool get sourceFail;
-  String get faileMessage;
+  String get failMessage;
   _$RenameFailCopyWith<_RenameFail> get copyWith;
 }
 
@@ -1794,16 +2154,20 @@ class _$_RenameSuccess implements _RenameSuccess {
     @required Result noMatter(),
     @required Result selectDirectorySuccess(String spKey, String directory),
     @required Result selectDirectoryFail(String spKey),
-    @required Result renameFail(bool sourceFail, String faileMessage),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
     @required Result renameSuccess(),
+    @required Result renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return renameSuccess();
   }
 
@@ -1815,8 +2179,10 @@ class _$_RenameSuccess implements _RenameSuccess {
     Result noMatter(),
     Result selectDirectorySuccess(String spKey, String directory),
     Result selectDirectoryFail(String spKey),
-    Result renameFail(bool sourceFail, String faileMessage),
+    Result valid(),
+    Result renameFail(String failMessage),
     Result renameSuccess(),
+    Result renameProcessing(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1834,16 +2200,20 @@ class _$_RenameSuccess implements _RenameSuccess {
     @required Result noMatter(_NoMatter value),
     @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
     @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
     @required Result renameFail(_RenameFail value),
     @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
     assert(noMatter != null);
     assert(selectDirectorySuccess != null);
     assert(selectDirectoryFail != null);
+    assert(valid != null);
     assert(renameFail != null);
     assert(renameSuccess != null);
+    assert(renameProcessing != null);
     return renameSuccess(this);
   }
 
@@ -1855,8 +2225,10 @@ class _$_RenameSuccess implements _RenameSuccess {
     Result noMatter(_NoMatter value),
     Result selectDirectorySuccess(_SelectDirectorySuccess value),
     Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
     Result renameFail(_RenameFail value),
     Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1869,4 +2241,137 @@ class _$_RenameSuccess implements _RenameSuccess {
 
 abstract class _RenameSuccess implements RenameFolderState {
   const factory _RenameSuccess() = _$_RenameSuccess;
+}
+
+/// @nodoc
+abstract class _$RenameProcessingCopyWith<$Res> {
+  factory _$RenameProcessingCopyWith(
+          _RenameProcessing value, $Res Function(_RenameProcessing) then) =
+      __$RenameProcessingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RenameProcessingCopyWithImpl<$Res>
+    extends _$RenameFolderStateCopyWithImpl<$Res>
+    implements _$RenameProcessingCopyWith<$Res> {
+  __$RenameProcessingCopyWithImpl(
+      _RenameProcessing _value, $Res Function(_RenameProcessing) _then)
+      : super(_value, (v) => _then(v as _RenameProcessing));
+
+  @override
+  _RenameProcessing get _value => super._value as _RenameProcessing;
+}
+
+/// @nodoc
+class _$_RenameProcessing implements _RenameProcessing {
+  const _$_RenameProcessing();
+
+  @override
+  String toString() {
+    return 'RenameFolderState.renameProcessing()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _RenameProcessing);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result directoryStorage(String spKey, String directory),
+    @required Result noMatter(),
+    @required Result selectDirectorySuccess(String spKey, String directory),
+    @required Result selectDirectoryFail(String spKey),
+    @required Result valid(),
+    @required Result renameFail(String failMessage),
+    @required Result renameSuccess(),
+    @required Result renameProcessing(),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(valid != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    assert(renameProcessing != null);
+    return renameProcessing();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result directoryStorage(String spKey, String directory),
+    Result noMatter(),
+    Result selectDirectorySuccess(String spKey, String directory),
+    Result selectDirectoryFail(String spKey),
+    Result valid(),
+    Result renameFail(String failMessage),
+    Result renameSuccess(),
+    Result renameProcessing(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (renameProcessing != null) {
+      return renameProcessing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result directoryStorage(_DirectoryStorage value),
+    @required Result noMatter(_NoMatter value),
+    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required Result selectDirectoryFail(_SelectDirectoryFail value),
+    @required Result valid(_Valid value),
+    @required Result renameFail(_RenameFail value),
+    @required Result renameSuccess(_RenameSuccess value),
+    @required Result renameProcessing(_RenameProcessing value),
+  }) {
+    assert(initial != null);
+    assert(directoryStorage != null);
+    assert(noMatter != null);
+    assert(selectDirectorySuccess != null);
+    assert(selectDirectoryFail != null);
+    assert(valid != null);
+    assert(renameFail != null);
+    assert(renameSuccess != null);
+    assert(renameProcessing != null);
+    return renameProcessing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result directoryStorage(_DirectoryStorage value),
+    Result noMatter(_NoMatter value),
+    Result selectDirectorySuccess(_SelectDirectorySuccess value),
+    Result selectDirectoryFail(_SelectDirectoryFail value),
+    Result valid(_Valid value),
+    Result renameFail(_RenameFail value),
+    Result renameSuccess(_RenameSuccess value),
+    Result renameProcessing(_RenameProcessing value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (renameProcessing != null) {
+      return renameProcessing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RenameProcessing implements RenameFolderState {
+  const factory _RenameProcessing() = _$_RenameProcessing;
 }

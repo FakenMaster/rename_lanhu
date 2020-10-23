@@ -7,17 +7,14 @@ import 'package:stringx/stringx.dart';
 
 class FolderSelectWidget extends StatefulWidget {
   final String title;
-  final Function(String directory) onChange;
   //是否来源文件夹
   final bool source;
   final String spKey;
   const FolderSelectWidget({
     Key key,
     @required this.title,
-    @required this.onChange,
     this.source = true,
   })  : assert(title != null),
-        assert(onChange != null),
         assert(source != null),
         spKey = source == true ? SOURCE_DIRECTORY : DESTINATION_DIRECTORY,
         super(key: key);
@@ -35,10 +32,12 @@ class _FolderSelectWidgetState extends State<FolderSelectWidget> {
 
     _controller = TextEditingController()
       ..addListener(() {
-        widget.onChange(_controller.text);
         context.bloc<RenameFolderBloc>().add(
             RenameFolderEvent.directoryChange(widget.spKey, _controller.text));
       });
+    context
+        .bloc<RenameFolderBloc>()
+        .add(RenameFolderEvent.getDirectory(widget.spKey));
   }
 
   @override

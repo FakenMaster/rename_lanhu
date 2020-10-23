@@ -9,5 +9,6 @@ abstract class RenameFolderEvent with _$RenameFolderEvent {
       String spKey, String directory) = _SaveDirectory;
   const factory RenameFolderEvent.selectDirectory(String spKey) =
       _SelectDirectory;
+  const factory RenameFolderEvent.validateDirectory() = _ValidateDirectory;
   const factory RenameFolderEvent.rename() = _Rename;
 }
