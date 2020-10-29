@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
 import 'package:time/time.dart';
 import 'package:dartz/dartz.dart' show Tuple3;
 import 'package:flutter/material.dart';
@@ -57,7 +58,6 @@ class _HomePageState extends State<HomePage> {
           children: [
             NavigationRail(
               extended: true,
-              groupAlignment: 0.0,
               destinations: navigations
                   .map(
                     (e) => NavigationRailDestination(
@@ -88,9 +88,10 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: PageView(
                 controller: pageController,
+                physics: NeverScrollableScrollPhysics(),
                 children: [
                   RenameFolderPage(),
-                  TextPage(),
+                  RenameFilePage(),
                   TerminalPage(),
                   ButtonPage(),
                 ],

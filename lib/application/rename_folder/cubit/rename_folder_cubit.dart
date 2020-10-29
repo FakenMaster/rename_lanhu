@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:rename_lanhu/infrasture/util/sp_keys.dart';
+import 'package:rename_lanhu/infrasture/util/src/sp_keys.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:time/time.dart';
@@ -20,7 +20,7 @@ part 'rename_folder_cubit.freezed.dart';
 class RenameFolderCubit extends Cubit<RenameFolderState> {
   RenameFolderCubit(this.sharedPreferences) : super(_Initial()) {
     _directoryStreams = {};
-    [SOURCE_DIRECTORY, DESTINATION_DIRECTORY].forEach((spKey) {
+    [StorageKeys.SOURCE_DIRECTORY, StorageKeys.DESTINATION_DIRECTORY].forEach((spKey) {
       _directoryStreams[spKey] = initDirectoryStream(spKey);
     });
     _renameSubject = BehaviorSubject.seeded(false);
@@ -80,9 +80,9 @@ class RenameFolderCubit extends Cubit<RenameFolderState> {
   }
 
   void validate(){
-    emit(validateDirectory('来源', _directoryStreams[SOURCE_DIRECTORY].value)
+    emit(validateDirectory('来源', _directoryStreams[StorageKeys.SOURCE_DIRECTORY].value)
           .orElse(() => validateDirectory(
-              '目标', _directoryStreams[DESTINATION_DIRECTORY].value))
+              '目标', _directoryStreams[StorageKeys.DESTINATION_DIRECTORY].value))
           .getOrElse(() => RenameFolderState.valid()));
   }
 
@@ -103,7 +103,7 @@ class RenameFolderCubit extends Cubit<RenameFolderState> {
   renameBlueLakeFiles() async {
     try {
       Directory sourceDirectory =
-          Directory(_directoryStreams[SOURCE_DIRECTORY].value);
+          Directory(_directoryStreams[StorageKeys.SOURCE_DIRECTORY].value);
       await for (FileSystemEntity entity in sourceDirectory.list()) {
         String path = entity.path;
         if (!FileSystemEntity.isFileSync(entity.path)) {
@@ -127,7 +127,7 @@ class RenameFolderCubit extends Cubit<RenameFolderState> {
 
         String separator = package_path.separator;
         String destinationFilePath =
-            _directoryStreams[DESTINATION_DIRECTORY].value +
+            _directoryStreams[StorageKeys.DESTINATION_DIRECTORY].value +
                 '$separator' +
                 (folderName != null ? folderName + "$separator" : '') +
                 fileName +

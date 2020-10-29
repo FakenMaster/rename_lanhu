@@ -2,22 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:rename_lanhu/application/rename_folder/cubit/rename_folder_cubit.dart';
-import 'package:rename_lanhu/infrasture/util/sp_keys.dart';
 import 'package:stringx/stringx.dart';
-import 'package:time/time.dart';
 
 class FolderSelectWidget extends StatefulWidget {
   final String title;
-  //是否来源文件夹
-  final bool source;
   final String spKey;
   const FolderSelectWidget({
     Key key,
     @required this.title,
-    this.source = true,
+    @required this.spKey ,
   })  : assert(title != null),
-        assert(source != null),
-        spKey = source == true ? SOURCE_DIRECTORY : DESTINATION_DIRECTORY,
+        assert(spKey != null),
         super(key: key);
 
   @override

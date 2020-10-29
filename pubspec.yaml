@@ -51,5 +51,10 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+  
+dependency_overrides:
+  meta: 1.2.3
+  analyzer: 0.40.5
+  build_runner: 1.10.0
 
 scripts: derry.yaml

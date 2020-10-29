@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:rename_lanhu/application/rename_folder/cubit/rename_folder_cubit.dart';
+import 'package:rename_lanhu/infrasture/util/src/sp_keys.dart';
+import 'package:rename_lanhu/presentation/rename_folder/widget/folder_select_widget.dart';
 import 'package:time/time.dart';
-
-import 'widget/folder_select_widget.dart';
 
 class RenameFolderPage extends StatefulWidget {
   const RenameFolderPage({Key key}) : super(key: key);
@@ -14,7 +14,8 @@ class RenameFolderPage extends StatefulWidget {
   _RenameFolderPageState createState() => _RenameFolderPageState();
 }
 
-class _RenameFolderPageState extends State<RenameFolderPage> with AutomaticKeepAliveClientMixin{
+class _RenameFolderPageState extends State<RenameFolderPage>
+    with AutomaticKeepAliveClientMixin {
   bool loading = false;
   @override
   void initState() {
@@ -48,6 +49,7 @@ class _RenameFolderPageState extends State<RenameFolderPage> with AutomaticKeepA
                       FolderSelectWidget(
                         key: Key('source'),
                         title: '来源路径：',
+                        spKey: StorageKeys.SOURCE_DIRECTORY,
                       ),
                       SizedBox(
                         height: 40,
@@ -55,7 +57,7 @@ class _RenameFolderPageState extends State<RenameFolderPage> with AutomaticKeepA
                       FolderSelectWidget(
                         key: Key('destination'),
                         title: '目标路径：',
-                        source: false,
+                        spKey: StorageKeys.DESTINATION_DIRECTORY,
                       ),
                       SizedBox(
                         height: 40,

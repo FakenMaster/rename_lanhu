@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rename_lanhu/infrasture/util/color.dart';
+import 'package:rename_lanhu/infrasture/util/src/color.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:time/time.dart';
 
