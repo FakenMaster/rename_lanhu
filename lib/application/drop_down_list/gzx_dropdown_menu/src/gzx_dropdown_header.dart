@@ -14,7 +14,6 @@ class GZXDropdownHeader extends StatefulWidget {
   final Color iconColor;
   final Color iconDropdownColor;
 
-//  final List<String> menuStrings;
   final double height;
   final double dividerHeight;
   final Color dividerColor;
