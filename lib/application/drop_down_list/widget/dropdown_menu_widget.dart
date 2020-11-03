@@ -23,8 +23,10 @@ class DropdownMenuWidget extends StatelessWidget {
 class DropdownMenuHead extends StatelessWidget {
   const DropdownMenuHead({Key key, this.title, this.headerHeight = 40})
       : super(key: key);
+
   /// header title
   final String title;
+
   /// header height, default is 40
   final double headerHeight;
   @override
