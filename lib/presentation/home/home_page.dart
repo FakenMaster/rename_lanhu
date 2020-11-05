@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_widget.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
@@ -13,6 +15,8 @@ import 'package:rename_lanhu/infrasture/dependency_injection/injector.dart';
 import 'package:rename_lanhu/presentation/rename_folder/rename_folder_page.dart';
 import 'package:rename_lanhu/presentation/terminal/terminal_page.dart';
 import 'package:stringx/stringx.dart';
+import 'package:rename_lanhu/presentation/opacity&offstage&visibility/index.dart'
+    as oov;
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -30,6 +34,7 @@ class _HomePageState extends State<HomePage> {
     Tuple3(Ionicons.document_outline, Ionicons.document, '文件'),
     Tuple3(Ionicons.terminal_outline, Ionicons.terminal, '命令行'),
     Tuple3(Ionicons.terminal_outline, Ionicons.terminal, '按钮'),
+    Tuple3(Ionicons.egg_outline, Ionicons.egg, 'stingy'),
   ];
 
   PageController pageController;
@@ -97,6 +102,7 @@ class _HomePageState extends State<HomePage> {
                   RenameFilePage(),
                   TerminalPage(),
                   ButtonPage(),
+                  StingyTest(),
                 ],
               ),
             ),
@@ -192,6 +198,9 @@ class _ButtonState extends State<ButtonPage>
     with AutomaticKeepAliveClientMixin {
   int value;
 
+  double _currentSliderValue = 128;
+  bool offstage = false;
+  bool visible = true;
   @override
   void initState() {
     super.initState();
@@ -231,9 +240,112 @@ class _ButtonState extends State<ButtonPage>
               child: Icon(Ionicons.refresh),
             ),
             SizedBox(
-              height: 100,
+              height: 10,
             ),
-            DropdownMenuWidget(titles: ['地域','用地类型','筛选'],),
+            DropdownMenuWidget(
+              titles: ['地域', '用地类型', '筛选'],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Slider(
+              value: _currentSliderValue,
+              min: 0,
+              max: 255,
+              divisions: 255,
+              label: _currentSliderValue.round().toString(),
+              onChanged: (double value) {
+                setState(() {
+                  _currentSliderValue = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            oov.Opacity(
+              opacity: _currentSliderValue / 255,
+              child: ColoredBox(
+                color: Colors.red,
+                child: SizedBox(
+                  width: 100,
+                  height: 100,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Switch(
+                value: offstage,
+                onChanged: (value) {
+                  setState(() {
+                    offstage = value;
+                  });
+                }),
+            SizedBox(
+              height: 20,
+            ),
+            oov.Offstage(
+              offstage: offstage,
+              child: OffstageColorBox(
+                offstage: offstage,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ColoredBox(
+              color: Colors.blue,
+              child: SizedBox(
+                width: 100,
+                height: 100,
+              ),
+            ),
+            Switch(
+                value: visible,
+                onChanged: (value) {
+                  setState(() {
+                    visible = value;
+                  });
+                }),
+            SizedBox(
+              height: 20,
+            ),
+            Visibility(
+                // maintainSize: true,
+                // maintainAnimation: true,
+                // maintainState: true,
+                replacement: Text('隐藏了'),
+                visible: visible,
+                child: VisibleColorBox(visible: visible)),
+            SizedBox(
+              height: 20,
+            ),
+            ColoredBox(
+              color: Colors.cyan,
+              child: SizedBox(
+                width: 100,
+                height: 100,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 200,
+              height: 100,
+              color: Colors.green,
+              child: Align(
+                widthFactor: 1.2,
+                heightFactor: 0.1,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.red,
+                ),
+              ),
+            ),
           ],
         ),
         // floatingActionButton: Column(
@@ -249,6 +361,67 @@ class _ButtonState extends State<ButtonPage>
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class OffstageColorBox extends StatefulWidget {
+  final bool offstage;
+  LeafRenderObjectWidget widget;
+  Divider divider;
+  OffstageColorBox({Key key, this.offstage}) : super(key: key) {}
+
+  @override
+  _OffstageColorBoxState createState() => _OffstageColorBoxState();
+}
+
+class _OffstageColorBoxState extends State<OffstageColorBox> {
+  @override
+  void initState() {
+    super.initState();
+    print('init OffstageColorBox 属性offstage:${widget.offstage}');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print('build: OffstageColorBox 属性offstage:${widget.offstage}');
+
+    return ColoredBox(
+      color: Colors.green,
+      child: SizedBox(
+        width: 100,
+        height: 100,
+      ),
+    );
+  }
+}
+
+class VisibleColorBox extends StatefulWidget {
+  final bool visible;
+
+  VisibleColorBox({Key key, this.visible}) : super(key: key) {}
+
+  @override
+  _VisibleColorBoxState createState() => _VisibleColorBoxState();
+}
+
+class _VisibleColorBoxState extends State<VisibleColorBox> {
+  @override
+  void initState() {
+    super.initState();
+    print('init VisibleColorBox 属性visible:${widget.visible}');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print('build: VisibleColorBox 属性visible:${widget.visible}');
+
+    return ColoredBox(
+      color: Colors.purple,
+      child: SizedBox(
+        width: 100,
+        height: 100,
+      ),
+    );
+  }
 }
 
 class MyButton extends StatefulWidget {
@@ -330,8 +503,10 @@ class _MyButtonState extends State<MyButton> {
         // bottom: 40,
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxHeight:
-                MediaQuery.of(context).size.height - offset.dy - size.height-40,
+            maxHeight: MediaQuery.of(context).size.height -
+                offset.dy -
+                size.height -
+                40,
           ),
           child: Material(
             elevation: 4.0,
@@ -356,5 +531,56 @@ class _MyButtonState extends State<MyButton> {
         ),
       ),
     );
+  }
+}
+
+class StingyTest extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: double.infinity,
+          minWidth: 100,
+          maxHeight: 500,
+          minHeight: 100,
+        ),
+        child: Stingy(
+            child: Container(
+          color: Colors.red,
+        )),
+      ),
+    );
+  }
+}
+
+class Stingy extends SingleChildRenderObjectWidget {
+  Stingy({Widget child}) : super(child: child);
+  @override
+  RenderObject createRenderObject(BuildContext context) {
+    return RenderStingy();
+  }
+}
+
+class RenderStingy extends RenderShiftedBox {
+  RenderStingy() : super(null);
+
+  @override
+  void performLayout() {
+    child.layout(
+        BoxConstraints(
+            minHeight: 0.0,
+            maxHeight: constraints.minHeight,
+            minWidth: 0.0,
+            maxWidth: constraints.minWidth),
+        parentUsesSize: true);
+
+    final BoxParentData childParentData = child.parentData;
+    childParentData.offset = Offset(
+      this.constraints.maxWidth - child.size.width,
+      this.constraints.maxHeight - child.size.height,
+    );
+
+    size = Size(this.constraints.maxWidth, constraints.maxHeight);
   }
 }
