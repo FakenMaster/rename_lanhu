@@ -336,13 +336,15 @@ class _ButtonState extends State<ButtonPage>
               width: 200,
               height: 100,
               color: Colors.green,
-              child: Align(
-                widthFactor: 1.2,
-                heightFactor: 0.1,
-                child: Container(
-                  width: 50,
-                  height: 50,
-                  color: Colors.red,
+              child: Positioned(
+                child: Align(
+                  widthFactor: 1.2,
+                  heightFactor: 0.1,
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    color: Colors.red,
+                  ),
                 ),
               ),
             ),
@@ -451,6 +453,10 @@ class _MyButtonState extends State<MyButton> {
 
   @override
   Widget build(BuildContext context) {
+    RenderBox renderBox;
+    Positioned positioned;
+    Stack stack;
+    Expanded expanded;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: iconDatas
