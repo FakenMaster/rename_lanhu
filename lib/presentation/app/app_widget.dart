@@ -14,7 +14,7 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Rename Lanhu Images',
       theme: ThemeData(
-        primarySwatch: LibraryColor.Primay.materialColor,
+        primarySwatch: LibraryColor.Primary.materialColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: DefaultTextStyle(

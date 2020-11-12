@@ -1,6 +1,9 @@
 import 'dart:math';
+import 'dart:ui' as ui;
+import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_widget.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
@@ -332,21 +335,38 @@ class _ButtonState extends State<ButtonPage>
             SizedBox(
               height: 20,
             ),
-            Container(
-              width: 200,
-              height: 100,
-              color: Colors.green,
-              child: Positioned(
-                child: Align(
-                  widthFactor: 1.2,
-                  heightFactor: 0.1,
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    color: Colors.red,
-                  ),
+            Row(
+              children: [
+                Container(
+                  color: Colors.blue,
+                  width: 100,
+                  height: 30,
                 ),
-              ),
+                Gap(
+                  gapSize: 40,
+                  color: Colors.black,
+                ),
+                Container(
+                  color: Colors.red,
+                  width: 60,
+                  height: 60,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      color: Colors.green,
+                      width: 30,
+                      height: 40,
+                    ),
+                    Gap(gapSize: 10),
+                    Container(
+                      color: Colors.yellow,
+                      width: 80,
+                      height: 80,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
@@ -457,6 +477,48 @@ class _MyButtonState extends State<MyButton> {
     Positioned positioned;
     Stack stack;
     Expanded expanded;
+    Scrollbar scrollbar;
+    RenderTransform renderTransform;
+    SliverGridParentData sliverGridParentData;
+    LeafRenderObjectWidget leafRenderObjectWidget;
+    Spacer spacer;
+    Divider divider;
+    Layer layer;
+    RenderSliver renderSliver;
+    Viewport viewport;
+    RenderParagraph renderParagraph;
+    TextField textField;
+    RenderTable renderTable;
+    RenderPadding renderPadding;
+    RenderView renderView;
+
+    SchedulerBinding schedulerBinding;
+    GestureBinding gestureBinding;
+    RendererBinding rendererBinding;
+    WidgetsBinding widgetsBinding;
+
+    PaintingBinding paintingBinding;
+    ServicesBinding servicesBinding;
+    SemanticsBinding semanticsBinding;
+    WidgetsFlutterBinding widgetsFlutterBinding;
+    //TestWidgetsFlutterBinding
+
+    PipelineOwner pipelineOwner;
+    BuildOwner buildOwner;
+
+    LayoutId layoutId;
+    InheritedWidget inheritedWidget;
+
+    StatelessWidget statelessWidget;
+
+    InheritedModel inheritedModel;
+    InheritedNotifier inheritedNotifier;
+
+    ui.Window window;
+
+    Animation animation;
+
+    TooltipTheme tooltipTheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: iconDatas
@@ -517,7 +579,7 @@ class _MyButtonState extends State<MyButton> {
           child: Material(
             elevation: 4.0,
             child: Card(
-              color: LibraryColor.Primay,
+              color: LibraryColor.Primary,
               child: ListView(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
@@ -544,19 +606,245 @@ class StingyTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxWidth: double.infinity,
-          minWidth: 100,
-          maxHeight: 500,
-          minHeight: 100,
+        body:
+            // ConstrainedBox(
+            //   constraints: BoxConstraints(
+            //     maxWidth: double.infinity,
+            //     minWidth: 100,
+            //     maxHeight: 500,
+            //     minHeight: 100,
+            //   ),
+            //   child: Stingy(
+            //     child: Container(
+            //       color: Colors.red,
+            //     ),
+            //   ),
+            // ),
+            Container(
+      margin: const EdgeInsets.all(20.0),
+      child:
+          // NameWidgetTest(
+          //   child: Row(
+          //     children: [
+          //       PeopleName(
+          //         first: true,
+          //       ),
+          //       PeopleName(
+          //         first: false,
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          //   CountNotifierTest(
+          // valueNotifier: CountValue(100),
+          // child: CountText(),
+          // InheritedThemeTest(),
+          AnimHeightTest(),
+    ));
+  }
+}
+
+class AnimHeightTest extends StatefulWidget {
+  @override
+  _AnimHeightTestState createState() => _AnimHeightTestState();
+}
+
+class _AnimHeightTestState extends State<AnimHeightTest>
+    with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<Offset> offset;
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(duration: 2.seconds, vsync: this)
+      ..addListener(() {
+        // setState(() {});
+      })
+      ..forward();
+    offset = Tween<Offset>(begin: Offset(0.0, -1.0), end: Offset(0.0, 0.0))
+        .animate(controller);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            AnimatedBuilder(
+              animation: controller,
+              builder: (context, child) {
+                return Container(
+                  color: LibraryColor.Primary,
+                  child: ClipRect(
+                                      child: Align(
+                      alignment: Alignment.topCenter,
+                      widthFactor: 1.0,
+                      heightFactor: controller.value,
+                      child: child,
+                    ),
+                  ),
+                );
+                return SlideTransition(
+                  position: offset,
+                  child: child,
+                );
+              },
+              child: SizedBox(
+                width: 400,
+                child: Text(
+                    '许多年之后，面对行刑队，奥雷良诺·布恩地亚上校将会回想起，他父亲带他去见识冰块的那个遥远的下午。那时的马贡多是一个有二十户人家的村落，用泥巴和芦苇盖的房屋就排列在一条河边。清澈的河水急急地流过，河心那些光滑、洁白的巨石，宛若史前动物留下的巨大的蛋。这块天地如此之新，许多东西尚未命名，提起它们时还须用手指指点点。每年到了三月光景，有一家衣衫褴褛的吉卜赛人家到村子附近来搭帐篷。他们吹笛击鼓，吵吵嚷嚷地向人们介绍最新的发明创造。最初他们带来了磁铁。一个胖乎乎的、留着拉碴胡子、长着一双雀爪般的手的吉卜赛人，自称叫墨尔基阿德斯，他把那玩意儿说成是马其顿的炼金术士们创造的第八奇迹，并当众作了一次惊人的表演。'),
+              ),
+            ),
+            Gap(
+              gapSize: 10,
+            ),
+            SizedBox(
+              width: 400,
+              child: Text(
+                  '许多年之后，面对行刑队，奥雷良诺·布恩地亚上校将会回想起，他父亲带他去见识冰块的那个遥远的下午。那时的马贡多是一个有二十户人家的村落，用泥巴和芦苇盖的房屋就排列在一条河边。清澈的河水急急地流过，河心那些光滑、洁白的巨石，宛若史前动物留下的巨大的蛋。这块天地如此之新，许多东西尚未命名，提起它们时还须用手指指点点。每年到了三月光景，有一家衣衫褴褛的吉卜赛人家到村子附近来搭帐篷。他们吹笛击鼓，吵吵嚷嚷地向人们介绍最新的发明创造。最初他们带来了磁铁。一个胖乎乎的、留着拉碴胡子、长着一双雀爪般的手的吉卜赛人，自称叫墨尔基阿德斯，他把那玩意儿说成是马其顿的炼金术士们创造的第八奇迹，并当众作了一次惊人的表演。'),
+            ),
+          ],
         ),
-        child: Stingy(
-            child: Container(
-          color: Colors.red,
-        )),
-      ),
+        RaisedButton(
+          onPressed: () {
+            if (controller.isCompleted) {
+              controller.reverse();
+            } else if (controller.isDismissed) {
+              controller.forward();
+            }
+          },
+          child: Text(
+              '${controller.isCompleted ? '收起' : controller.isDismissed ? '展开' : '动画中'}'),
+        ),
+      ],
     );
+  }
+}
+
+class InheritedThemeTest extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTextStyle(
+        style: TextStyle(fontSize: 48, color: Colors.red),
+        child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext _) {
+                    // InheritedTheme.captureAll() saves references to themes that
+                    // are found above the context provided to this widget's build
+                    // method, notably the DefaultTextStyle defined in MyApp. The
+                    // context passed to the MaterialPageRoute's builder is not used,
+                    // because its ancestors are above MyApp's home.
+                    return InheritedTheme.captureAll(
+                        context,
+                        Container(
+                          alignment: Alignment.center,
+                          color: Theme.of(context).colorScheme.surface,
+                          child: Text('Hello World'),
+                        ));
+                  },
+                ),
+              );
+            },
+            child: Center(child: Text('Tap Here'))));
+  }
+}
+
+class CountValue extends ValueNotifier<int> {
+  CountValue(int value) : super(value);
+}
+
+class CountText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    int value = CountInheritedNotifier.of(context).notifier.value;
+    return Text('$value');
+  }
+}
+
+class NameWidgetTest extends StatefulWidget {
+  final Widget child;
+
+  const NameWidgetTest({Key key, this.child}) : super(key: key);
+  @override
+  _NameWidgetTestState createState() => _NameWidgetTestState();
+}
+
+class _NameWidgetTestState extends State<NameWidgetTest> {
+  String firstName = 'FaKen';
+  String lastName = 'Lin';
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        NameInheritedWidget(
+          firstName: firstName,
+          lastName: lastName,
+          child: widget.child,
+        ),
+        RaisedButton(
+          onPressed: () {
+            setState(() {
+              firstName = 'FaKen${Random().nextInt(100)}';
+            });
+          },
+          child: Text('名字'),
+        ),
+        RaisedButton(
+          onPressed: () {
+            setState(() {
+              lastName = 'Lin${Random().nextInt(100)}';
+            });
+          },
+          child: Text('姓氏'),
+        ),
+      ],
+    );
+  }
+}
+
+class CountNotifierTest extends StatelessWidget {
+  final Widget child;
+  final ValueNotifier valueNotifier;
+
+  const CountNotifierTest({Key key, this.valueNotifier, this.child})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CountInheritedNotifier(
+          child: child,
+          notifier: valueNotifier,
+        ),
+        RaisedButton(
+          onPressed: () {
+            valueNotifier.value = Random().nextInt(100);
+          },
+          child: Text('随机值'),
+        ),
+      ],
+    );
+  }
+}
+
+class PeopleName extends StatelessWidget {
+  final bool first;
+  const PeopleName({Key key, this.first}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    String keyName = first ? 'firstName' : 'lastName';
+    print('重绘:$keyName');
+    final data = NameInheritedWidget.of(context, dependency: keyName);
+    return Text('${first ? data.firstName : data.lastName}');
   }
 }
 
@@ -588,5 +876,246 @@ class RenderStingy extends RenderShiftedBox {
     );
 
     size = Size(this.constraints.maxWidth, constraints.maxHeight);
+  }
+}
+
+class Gap extends LeafRenderObjectWidget {
+  const Gap({Key key, this.gapSize, this.color}) : super(key: key);
+  final double gapSize;
+  final Color color;
+  @override
+  RenderObject createRenderObject(BuildContext context) =>
+      RenderGap(gapSize: gapSize, color: color);
+
+  @override
+  void updateRenderObject(BuildContext context, RenderGap renderObject) {
+    renderObject
+      ..gapSize = gapSize
+      ..color = color;
+  }
+}
+
+class RenderGap extends RenderBox {
+  RenderGap({double gapSize, Color color})
+      : _gapSize = gapSize,
+        _color = color,
+        super();
+
+  double get gapSize => _gapSize;
+  double _gapSize;
+  set gapSize(double value) {
+    if (_gapSize == value) {
+      return;
+    }
+    _gapSize = value;
+    markNeedsLayout();
+  }
+
+  Color get color => _color;
+  Color _color;
+  set color(Color value) {
+    if (_color == value) {
+      return;
+    }
+    _color = value;
+    markNeedsPaint();
+  }
+
+  @override
+  void performLayout() {
+    final parent = this.parent;
+    if (parent is RenderFlex) {
+      if (parent.direction == Axis.horizontal) {
+        size = constraints.constrain(Size(_gapSize, 10));
+      } else {
+        size = constraints.constrain(Size(10, _gapSize));
+      }
+    } else {
+      throw FlutterError('Gap must be used inside a Flex Widget');
+    }
+  }
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    print('间隔颜色是:$color,大小:${offset & size}');
+    if (color != null) {
+      final Paint paint = Paint()..color = color;
+      context.canvas.drawRect(offset & size, paint);
+    }
+  }
+}
+
+class SliverGap extends LeafRenderObjectWidget {
+  const SliverGap({Key key, this.extent, this.color}) : super(key: key);
+  final double extent;
+  final Color color;
+  @override
+  RenderObject createRenderObject(BuildContext context) =>
+      RenderSliverGap(extent: extent, color: color);
+
+  @override
+  void updateRenderObject(BuildContext context, RenderSliverGap renderObject) {
+    renderObject
+      ..extent = extent
+      ..color = color;
+  }
+}
+
+class RenderSliverGap extends RenderSliver {
+  RenderSliverGap({double extent, Color color})
+      : _extent = extent,
+        _color = color;
+
+  double get extent => _extent;
+  double _extent;
+  set extent(double value) {
+    if (_extent == value) {
+      return;
+    }
+    _extent = value;
+    markNeedsLayout();
+  }
+
+  Color get color => _color;
+  Color _color;
+  set color(Color value) {
+    if (_color == value) {
+      return;
+    }
+    _color = color;
+    markNeedsPaint();
+  }
+
+  @override
+  void performLayout() {
+    final double paintExtent =
+        calculatePaintOffset(constraints, from: 0, to: extent);
+    final double cacheExtent =
+        calculateCacheOffset(constraints, from: 0, to: extent);
+
+    geometry = SliverGeometry(
+      scrollExtent: extent,
+      paintExtent: paintExtent,
+      cacheExtent: cacheExtent,
+      maxPaintExtent: extent,
+      hitTestExtent: paintExtent,
+      hasVisualOverflow: extent > constraints.remainingPaintExtent ||
+          constraints.scrollOffset > 0.0,
+    );
+  }
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    if (color != null) {
+      final Paint paint = Paint()..color = color;
+      final Size size = constraints
+          .asBoxConstraints(
+              minExtent: geometry.paintExtent, maxExtent: geometry.paintExtent)
+          .constrain(Size.zero);
+      context.canvas.drawRect(offset & size, paint);
+    }
+  }
+}
+
+class Exploder extends LeafRenderObjectWidget {
+  Exploder({Key key, this.color, this.radius}) : super(key: key);
+  final Color color;
+  final double radius;
+
+  @override
+  RenderObject createRenderObject(BuildContext context) {
+    return RenderExploder(color: color, radius: radius);
+  }
+
+  @override
+  void updateRenderObject(BuildContext context, RenderExploder renderObject) {
+    renderObject
+      ..color = color
+      ..radius = radius;
+  }
+}
+
+class RenderExploder extends RenderBox {
+  RenderExploder({Color color, double radius})
+      : _color = color,
+        _radius = radius;
+
+  Color get color => _color;
+  Color _color;
+  set color(Color value) {
+    if (_color == value) {
+      return;
+    }
+    _color = value;
+    markNeedsPaint();
+  }
+
+  double get radius => _radius;
+  double _radius;
+  set radius(double value) {
+    if (_radius == value) {
+      return;
+    }
+    _radius = value;
+    markNeedsLayout();
+  }
+
+  @override
+  void performLayout() {
+    size = constraints.constrain(Size(radius * 2, radius * 2));
+  }
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    context.canvas
+        .drawCircle(size.center(offset), radius, Paint()..color = color);
+  }
+}
+
+class ColorInheritedWidget extends InheritedWidget {
+  const ColorInheritedWidget({Key key, this.color, Widget child})
+      : super(key: key, child: child);
+  final Color color;
+
+  static ColorInheritedWidget of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ColorInheritedWidget>();
+  }
+
+  @override
+  bool updateShouldNotify(ColorInheritedWidget oldWidget) =>
+      color != oldWidget.color;
+}
+
+class NameInheritedWidget extends InheritedModel<String> {
+  const NameInheritedWidget(
+      {Key key, this.firstName, this.lastName, Widget child})
+      : super(key: key, child: child);
+  final String firstName;
+  final String lastName;
+  @override
+  bool updateShouldNotify(NameInheritedWidget oldWidget) {
+    return firstName != oldWidget.firstName || lastName != oldWidget.lastName;
+  }
+
+  @override
+  bool updateShouldNotifyDependent(
+      NameInheritedWidget oldWidget, Set<String> dependencies) {
+    return dependencies.contains('firstName') &&
+            oldWidget.firstName != firstName ||
+        dependencies.contains('lastName') && oldWidget.lastName != lastName;
+  }
+
+  static NameInheritedWidget of(BuildContext context, {String dependency}) {
+    return context.dependOnInheritedWidgetOfExactType<NameInheritedWidget>(
+        aspect: dependency);
+  }
+}
+
+class CountInheritedNotifier extends InheritedNotifier<ValueNotifier<int>> {
+  CountInheritedNotifier({Key key, ValueNotifier<int> notifier, Widget child})
+      : super(key: key, child: child, notifier: notifier);
+
+  static CountInheritedNotifier of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType();
   }
 }

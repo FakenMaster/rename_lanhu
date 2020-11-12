@@ -33,7 +33,7 @@ class DropdownMenuHead extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: LibraryColor.Primay,
+        color: LibraryColor.Primary,
         height: headerHeight,
         margin: const EdgeInsets.symmetric(horizontal: 10),
         child: GestureDetector(

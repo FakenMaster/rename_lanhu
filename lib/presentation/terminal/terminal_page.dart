@@ -70,7 +70,7 @@ class _TerminalPageState extends State<TerminalPage>
                   reverse: false,
                   itemBuilder: (context, index) {
                     return Card(
-                      color: LibraryColor.Primay,
+                      color: LibraryColor.Primary,
                       margin: const EdgeInsets.all(20),
                       child: ListTile(
                         title: Text('${datas[index]}'),
