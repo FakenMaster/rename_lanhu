@@ -676,14 +676,15 @@ class _AnimHeightTestState extends State<AnimHeightTest>
     return Column(
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AnimatedBuilder(
               animation: controller,
               builder: (context, child) {
-                return Container(
-                  color: LibraryColor.Primary,
-                  child: ClipRect(
-                                      child: Align(
+                return ClipRect(
+                  child: Container(
+                    color: LibraryColor.Primary,
+                    child: Align(
                       alignment: Alignment.topCenter,
                       widthFactor: 1.0,
                       heightFactor: controller.value,
@@ -702,14 +703,12 @@ class _AnimHeightTestState extends State<AnimHeightTest>
                     '许多年之后，面对行刑队，奥雷良诺·布恩地亚上校将会回想起，他父亲带他去见识冰块的那个遥远的下午。那时的马贡多是一个有二十户人家的村落，用泥巴和芦苇盖的房屋就排列在一条河边。清澈的河水急急地流过，河心那些光滑、洁白的巨石，宛若史前动物留下的巨大的蛋。这块天地如此之新，许多东西尚未命名，提起它们时还须用手指指点点。每年到了三月光景，有一家衣衫褴褛的吉卜赛人家到村子附近来搭帐篷。他们吹笛击鼓，吵吵嚷嚷地向人们介绍最新的发明创造。最初他们带来了磁铁。一个胖乎乎的、留着拉碴胡子、长着一双雀爪般的手的吉卜赛人，自称叫墨尔基阿德斯，他把那玩意儿说成是马其顿的炼金术士们创造的第八奇迹，并当众作了一次惊人的表演。'),
               ),
             ),
-            Gap(
-              gapSize: 10,
-            ),
-            SizedBox(
-              width: 400,
-              child: Text(
-                  '许多年之后，面对行刑队，奥雷良诺·布恩地亚上校将会回想起，他父亲带他去见识冰块的那个遥远的下午。那时的马贡多是一个有二十户人家的村落，用泥巴和芦苇盖的房屋就排列在一条河边。清澈的河水急急地流过，河心那些光滑、洁白的巨石，宛若史前动物留下的巨大的蛋。这块天地如此之新，许多东西尚未命名，提起它们时还须用手指指点点。每年到了三月光景，有一家衣衫褴褛的吉卜赛人家到村子附近来搭帐篷。他们吹笛击鼓，吵吵嚷嚷地向人们介绍最新的发明创造。最初他们带来了磁铁。一个胖乎乎的、留着拉碴胡子、长着一双雀爪般的手的吉卜赛人，自称叫墨尔基阿德斯，他把那玩意儿说成是马其顿的炼金术士们创造的第八奇迹，并当众作了一次惊人的表演。'),
-            ),
+            
+            // SizedBox(
+            //   width: 400,
+            //   child: Text(
+            //       '许多年之后，面对行刑队，奥雷良诺·布恩地亚上校将会回想起，他父亲带他去见识冰块的那个遥远的下午。那时的马贡多是一个有二十户人家的村落，用泥巴和芦苇盖的房屋就排列在一条河边。清澈的河水急急地流过，河心那些光滑、洁白的巨石，宛若史前动物留下的巨大的蛋。这块天地如此之新，许多东西尚未命名，提起它们时还须用手指指点点。每年到了三月光景，有一家衣衫褴褛的吉卜赛人家到村子附近来搭帐篷。他们吹笛击鼓，吵吵嚷嚷地向人们介绍最新的发明创造。最初他们带来了磁铁。一个胖乎乎的、留着拉碴胡子、长着一双雀爪般的手的吉卜赛人，自称叫墨尔基阿德斯，他把那玩意儿说成是马其顿的炼金术士们创造的第八奇迹，并当众作了一次惊人的表演。'),
+            // ),
           ],
         ),
         RaisedButton(
