@@ -71,15 +71,18 @@ class _DropdownHeaderWidgetState extends State<_DropdownHeaderWidget> {
     num delayMilliseconds = 0;
     if (notifier.value == true) {
       /// 已经有弹出框，先隐藏
-      notifier.value = false;
       if (index == overlayIndex) {
         /// 同一个header点击
         overlayIndex = null;
+        notifier.value = false;
         return;
       }
 
-      /// 不同的header点击
-      delayMilliseconds = 200;
+      /// 不同的header点击:加下面两行是为了不要收起的效果了
+      dropdownEntry.remove();
+      dropdownEntry = null;
+
+      delayMilliseconds = 0;
     }
     overlayIndex = index;
     Future.delayed(delayMilliseconds.milliseconds, showOverlay);
