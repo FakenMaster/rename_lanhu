@@ -3,27 +3,34 @@ import 'package:provider/provider.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:time/time.dart';
 import 'package:stringx/stringx.dart';
+
 /// TODO: how to update overlay layout without removing overlay?
 class DropdownWidget extends StatelessWidget {
   final List<String> headerTitles;
-
-  const DropdownWidget({Key key, @required this.headerTitles})
+  final List<String> contents;
+  const DropdownWidget(
+      {Key key, @required this.headerTitles, @required this.contents})
       : assert(headerTitles != null),
+        assert(contents != null),
         super(key: key);
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => OverlayStatusNotifier(),
-      child: _DropdownHeaderWidget(headerTitles: headerTitles),
+      child:
+          _DropdownHeaderWidget(headerTitles: headerTitles, contents: contents),
     );
   }
 }
 
 class _DropdownHeaderWidget extends StatefulWidget {
   final List<String> headerTitles;
+  final List<String> contents;
 
-  const _DropdownHeaderWidget({Key key, @required this.headerTitles})
+  const _DropdownHeaderWidget(
+      {Key key, @required this.headerTitles, @required this.contents})
       : assert(headerTitles != null),
+        assert(contents != null),
         super(key: key);
 
   @override
@@ -33,7 +40,7 @@ class _DropdownHeaderWidget extends StatefulWidget {
 class _DropdownHeaderWidgetState extends State<_DropdownHeaderWidget> {
   GlobalKey dropdownKey;
   OverlayEntry dropdownEntry;
-  int index;
+  int overlayIndex;
 
   @override
   void initState() {
@@ -49,7 +56,7 @@ class _DropdownHeaderWidgetState extends State<_DropdownHeaderWidget> {
           .mapWithIndex((index, title) => Expanded(
                 child: RaisedButton(
                   onPressed: () {
-                    showOverlay(index);
+                    toggleOverlay(index);
                   },
                   child: Text(title),
                 ),
@@ -58,27 +65,45 @@ class _DropdownHeaderWidgetState extends State<_DropdownHeaderWidget> {
     );
   }
 
-  void showOverlay(final int index) {
+  void toggleOverlay(final int index) {
     OverlayStatusNotifier notifier =
         Provider.of<OverlayStatusNotifier>(context, listen: false);
+    num delayMilliseconds = 0;
     if (notifier.value == true) {
+      /// 已经有弹出框，先隐藏
       notifier.value = false;
-      return;
-    }
+      if (index == overlayIndex) {
+        /// 同一个header点击
+        overlayIndex = null;
+        return;
+      }
 
+      /// 不同的header点击
+      delayMilliseconds = 200;
+    }
+    overlayIndex = index;
+    Future.delayed(delayMilliseconds.milliseconds, showOverlay);
+  }
+
+  void showOverlay() {
+    OverlayStatusNotifier notifier =
+        Provider.of<OverlayStatusNotifier>(context, listen: false);
     final RenderBox dropdownBox =
         dropdownKey.currentContext.findRenderObject() as RenderBox;
 
     final Offset dropdownPosition = dropdownBox.localToGlobal(Offset.zero);
-
     dropdownEntry = OverlayEntry(
       builder: (context) {
         return Positioned(
           left: dropdownPosition.dx,
+          right: MediaQuery.of(context).size.width -
+              dropdownPosition.dx -
+              dropdownBox.size.width,
           top: dropdownPosition.dy + dropdownBox.size.height,
           child: ChangeNotifierProvider.value(
             value: notifier,
             child: OverlayWidget(
+              content: widget.contents[overlayIndex],
               dismissCallback: () {
                 dropdownEntry.remove();
                 dropdownEntry = null;
@@ -96,7 +121,9 @@ class _DropdownHeaderWidgetState extends State<_DropdownHeaderWidget> {
 
 class OverlayWidget extends StatefulWidget {
   final VoidCallback dismissCallback;
-  const OverlayWidget({Key key, @required this.dismissCallback})
+  final String content;
+  const OverlayWidget(
+      {Key key, @required this.dismissCallback, @required this.content})
       : super(key: key);
   @override
   _OverlayWidgetState createState() => _OverlayWidgetState();
@@ -149,9 +176,9 @@ class _OverlayWidgetState extends State<OverlayWidget>
           );
         },
         child: SizedBox(
-          width: 400,
+          // width: double.infinity,
           child: Text(
-            '许多年之后，面对行刑队，奥雷良诺·布恩地亚上校将会回想起，他父亲带他去见识冰块的那个遥远的下午。那时的马贡多是一个有二十户人家的村落，用泥巴和芦苇盖的房屋就排列在一条河边。清澈的河水急急地流过，河心那些光滑、洁白的巨石，宛若史前动物留下的巨大的蛋。这块天地如此之新，许多东西尚未命名，提起它们时还须用手指指点点。每年到了三月光景，有一家衣衫褴褛的吉卜赛人家到村子附近来搭帐篷。他们吹笛击鼓，吵吵嚷嚷地向人们介绍最新的发明创造。最初他们带来了磁铁。一个胖乎乎的、留着拉碴胡子、长着一双雀爪般的手的吉卜赛人，自称叫墨尔基阿德斯，他把那玩意儿说成是马其顿的炼金术士们创造的第八奇迹，并当众作了一次惊人的表演。',
+            widget.content,
             style: TextStyle(
               fontSize: 20,
               color: Colors.black,
