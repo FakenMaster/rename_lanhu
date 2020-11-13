@@ -6,6 +6,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_widget.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
+import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_widget.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
 import 'package:time/time.dart';
 import 'package:dartz/dartz.dart' show Tuple3, Tuple3;
@@ -653,6 +654,7 @@ class _AnimHeightTestState extends State<AnimHeightTest>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<Offset> offset;
+
   @override
   void initState() {
     super.initState();
@@ -716,9 +718,15 @@ class _AnimHeightTestState extends State<AnimHeightTest>
           child: Text(
               '${controller.isCompleted ? '收起' : controller.isDismissed ? '展开' : '动画中'}'),
         ),
+        Gap(gapSize: 20),
+        DropdownWidget(
+          headerTitles: ['下拉弹出框'],
+        ),
       ],
     );
   }
+
+  
 }
 
 class InheritedThemeTest extends StatelessWidget {
@@ -930,7 +938,7 @@ class RenderGap extends RenderBox {
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    print('间隔颜色是:$color,大小:${offset & size}');
+    // print('间隔颜色是:$color,大小:${offset & size}');
     if (color != null) {
       final Paint paint = Paint()..color = color;
       context.canvas.drawRect(offset & size, paint);
