@@ -6,7 +6,9 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_widget.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
+import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_page.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_widget.dart';
+import 'package:rename_lanhu/presentation/popup/popup_page.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
 import 'package:time/time.dart';
 import 'package:dartz/dartz.dart' show Tuple3, Tuple3;
@@ -39,6 +41,8 @@ class _HomePageState extends State<HomePage> {
     Tuple3(Ionicons.terminal_outline, Ionicons.terminal, '命令行'),
     Tuple3(Ionicons.terminal_outline, Ionicons.terminal, '按钮'),
     Tuple3(Ionicons.egg_outline, Ionicons.egg, 'stingy'),
+    Tuple3(Ionicons.podium_outline, Ionicons.podium, '弹出下拉框'),
+
   ];
 
   PageController pageController;
@@ -107,6 +111,12 @@ class _HomePageState extends State<HomePage> {
                   TerminalPage(),
                   ButtonPage(),
                   StingyTest(),
+                  // ChildWidgetFromOutside(
+                  //     child1: MyText2(Random().nextInt(200)),
+                  //     child2Builder: (context) =>
+                  //         MyText2(Random().nextInt(200))),
+
+                  PopupPage(),
                 ],
               ),
             ),
@@ -114,6 +124,34 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+}
+
+class MyText2 extends StatelessWidget {
+  final int old;
+  MyText2(this.old);
+  @override
+  Widget build(BuildContext context) {
+    return Text('$old : ${Random().nextInt(300)}');
+  }
+}
+
+class MyText extends StatefulWidget {
+  @override
+  _MyTextState createState() => _MyTextState();
+}
+
+class _MyTextState extends State<MyText> {
+  int old;
+  @override
+  void initState() {
+    super.initState();
+    old = Random().nextInt(200);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('$old : ${Random().nextInt(300)}');
   }
 }
 
@@ -140,7 +178,7 @@ class _TextPageState extends State<TextPage>
   }
 
   /// initState调用之后，这个方法马上被调用。
-  /// 但是什么情况下，initState不调用，这个方法会调用呢？？？
+  /// 但是什么情况下，initState不调用，这个方法会调用呢？？？：在使用了InheritedWidget，并且使得InheritedWidget属性改变时，枝叶child会
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -520,6 +558,8 @@ class _MyButtonState extends State<MyButton> {
     Animation animation;
 
     TooltipTheme tooltipTheme;
+
+    CustomClipper customClipper;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: iconDatas
@@ -607,41 +647,41 @@ class StingyTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:
-            // ConstrainedBox(
-            //   constraints: BoxConstraints(
-            //     maxWidth: double.infinity,
-            //     minWidth: 100,
-            //     maxHeight: 500,
-            //     minHeight: 100,
-            //   ),
-            //   child: Stingy(
-            //     child: Container(
-            //       color: Colors.red,
-            //     ),
-            //   ),
-            // ),
-            Container(
+        body: Container(
       margin: const EdgeInsets.all(20.0),
-      child:
-          // NameWidgetTest(
-          //   child: Row(
-          //     children: [
-          //       PeopleName(
-          //         first: true,
-          //       ),
-          //       PeopleName(
-          //         first: false,
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          //   CountNotifierTest(
-          // valueNotifier: CountValue(100),
-          // child: CountText(),
-          // InheritedThemeTest(),
-          AnimHeightTest(),
+      child: AnimHeightTest(),
     ));
+  }
+}
+
+class ChildWidgetFromOutside extends StatefulWidget {
+  final Widget child1;
+  final WidgetBuilder child2Builder;
+
+  const ChildWidgetFromOutside({Key key, this.child1, this.child2Builder})
+      : super(key: key);
+  @override
+  _ChildWidgetFromOutsideState createState() => _ChildWidgetFromOutsideState();
+}
+
+class _ChildWidgetFromOutsideState extends State<ChildWidgetFromOutside> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          RaisedButton(
+            onPressed: () {
+              setState(() {});
+            },
+            child: Text('刷新'),
+          ),
+          //一个是widget，一个是WidgetBuilder，为什么刷新的时候只刷新使用方法的呢？
+          widget.child1,
+          widget.child2Builder(context),
+        ],
+      ),
+    );
   }
 }
 
