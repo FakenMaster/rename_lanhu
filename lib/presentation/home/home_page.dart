@@ -8,7 +8,7 @@ import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_wid
 import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_page.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_widget.dart';
-import 'package:rename_lanhu/presentation/popup/popup_page.dart';
+import 'package:rename_lanhu/presentation/popup/popup_test_page.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
 import 'package:time/time.dart';
 import 'package:dartz/dartz.dart' show Tuple3, Tuple3;

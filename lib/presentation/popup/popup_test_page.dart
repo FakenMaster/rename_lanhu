@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:rename_lanhu/presentation/popup/popup_widget.dart';
 import 'package:stringx/stringx.dart';
-import 'package:time/time.dart';
 
 /// TODO:复杂的界面实现，可以传入自定义的ListView itemBuilder，或者非ListView的Widget。
 class PopupPage extends StatefulWidget {
@@ -81,7 +81,32 @@ class _PopupPageState extends State<PopupPage> {
           PopupWidget.listBuilder(
             titles: getTitles(),
             contents: contents,
-            // contentHeights: [1200,400],
+            itemBuilders: List.generate(titles.length, (menuIndex) {
+              return (context, index, selected) {
+                Color color = selected ? LibraryColor.Primary : Colors.black87;
+                String content = contents[menuIndex][index];
+                return menuIndex.isEven
+                    ? ListTile(
+                        leading: Icon(Ionicons.watch, color: color),
+                        title: Text(
+                          contents[menuIndex][index],
+                          style: TextStyle(color: color),
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          '$content',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: selected
+                                ? LibraryColor.Primary
+                                : Colors.black54,
+                          ),
+                        ),
+                      );
+              };
+            }),
             onMenuSelect: (index) {
               setState(() {
                 selectMenuIndex = index;
