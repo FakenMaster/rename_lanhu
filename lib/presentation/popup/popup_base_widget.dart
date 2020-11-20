@@ -15,6 +15,7 @@ class PopupBaseWidget extends StatefulWidget {
     @required this.titles,
     @required this.contents,
     List<double> contentHeights,
+    List<WidgetBuilder> contentBuilders,
     List<IndexedSelectedWidgetBuilder> itemBuilders,
     this.onMenuSelect,
     this.onContentSelect,
@@ -24,6 +25,8 @@ class PopupBaseWidget extends StatefulWidget {
     double contentMarginBottom,
   })  : assert(contentMarginBottom == null || contentMarginBottom >= 0),
         contentHeights = ListX.copyList<double>(contentHeights, titles.length),
+        contentBuilders =
+            ListX.copyList<WidgetBuilder>(contentBuilders, titles.length),
         itemBuilders = ListX.copyList<IndexedSelectedWidgetBuilder>(
             itemBuilders, titles.length),
         selectMenuColor = selectMenuColor ?? LibraryColor.Primary,
@@ -37,7 +40,9 @@ class PopupBaseWidget extends StatefulWidget {
   final List<List<String>> contents;
   // 每一项高度, null就是随内容变化
   final List<double> contentHeights;
-  // 每一项
+  // 对应于每个弹出框的内容widget
+  final List<WidgetBuilder> contentBuilders;
+  // 对应于每个弹窗框中内容时ListView的itemBuilder
   final List<IndexedSelectedWidgetBuilder> itemBuilders;
 
   final MenuSelectCallback onMenuSelect;
@@ -168,6 +173,7 @@ class _PopupBaseWidgetState extends State<PopupBaseWidget> {
                     selectIndex: selectContentMap[selectMenuIndex],
                     duration: widget.duration,
                     scrollOffset: scrollOffsets[selectMenuIndex],
+                    contentBuilder: widget.contentBuilders[selectMenuIndex],
                     itemBuilder: widget.itemBuilders[selectMenuIndex],
                     contentLength: widget.contents[selectMenuIndex].length,
                     onContentSelect: (index, scrollOffset) {
@@ -196,6 +202,9 @@ class PopupContentWidget extends StatefulWidget {
   final Function(int index, double scrollOffset) onContentSelect;
   final Duration duration;
   final double scrollOffset;
+  //对应于整个内容的Widget
+  final WidgetBuilder contentBuilder;
+  // 对应于ListView的itemBuilder
   final IndexedSelectedWidgetBuilder itemBuilder;
   final int contentLength;
   const PopupContentWidget({
@@ -204,6 +213,7 @@ class PopupContentWidget extends StatefulWidget {
     this.onContentSelect,
     this.duration,
     @required this.scrollOffset,
+    this.contentBuilder,
     this.itemBuilder,
     @required this.contentLength,
   })  : assert(itemBuilder != null),
@@ -259,26 +269,32 @@ class _PopupContentWidgetState extends State<PopupContentWidget>
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Scrollbar(
-          child: ListView.builder(
-            shrinkWrap: true,
-            controller: _scrollController,
-            itemBuilder: (context, index) {
-              final bool selected = index == selectIndex;
-              return Material(
-                color: Colors.white,
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      selectIndex = index;
-                      widget.onContentSelect(index, _scrollController.offset);
-                    });
+          child: widget.contentBuilder != null
+              ? SingleChildScrollView(
+                  controller: _scrollController,
+                  child: widget.contentBuilder(context),
+                )
+              : ListView.builder(
+                  shrinkWrap: true,
+                  controller: _scrollController,
+                  itemBuilder: (context, index) {
+                    final bool selected = index == selectIndex;
+                    return Material(
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectIndex = index;
+                            widget.onContentSelect(
+                                index, _scrollController.offset);
+                          });
+                        },
+                        child: widget.itemBuilder(context, index, selected),
+                      ),
+                    );
                   },
-                  child: widget.itemBuilder(context, index, selected),
+                  itemCount: widget.contentLength,
                 ),
-              );
-            },
-            itemCount: widget.contentLength,
-          ),
         ),
       ),
     );

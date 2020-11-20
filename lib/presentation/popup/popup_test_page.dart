@@ -5,6 +5,10 @@ import 'package:rename_lanhu/presentation/popup/popup_widget.dart';
 import 'package:stringx/stringx.dart';
 
 /// TODO:复杂的界面实现，可以传入自定义的ListView itemBuilder，或者非ListView的Widget。
+///
+/// 第一步：实现单一列表的滑动距离保存✅
+/// 第二部：实现自定义Widget（如果超过一屏需要滑动，也和第一步类似，保存即可）
+/// 第三部：实现多个联动列表，保存滑动距离
 class PopupPage extends StatefulWidget {
   @override
   _PopupPageState createState() => _PopupPageState();
@@ -78,47 +82,7 @@ class _PopupPageState extends State<PopupPage> {
       ),
       body: Column(
         children: [
-          PopupWidget.listBuilder(
-            titles: getTitles(),
-            contents: contents,
-            itemBuilders: List.generate(titles.length, (menuIndex) {
-              return (context, index, selected) {
-                Color color = selected ? LibraryColor.Primary : Colors.black87;
-                String content = contents[menuIndex][index];
-                return menuIndex.isEven
-                    ? ListTile(
-                        leading: Icon(Ionicons.watch, color: color),
-                        title: Text(
-                          contents[menuIndex][index],
-                          style: TextStyle(color: color),
-                        ),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          '$content',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: selected
-                                ? LibraryColor.Primary
-                                : Colors.black54,
-                          ),
-                        ),
-                      );
-              };
-            }),
-            onMenuSelect: (index) {
-              setState(() {
-                selectMenuIndex = index;
-              });
-            },
-            onContentSelect: (index) {
-              setState(() {
-                selectDataList[selectMenuIndex] =
-                    contents[selectMenuIndex][index];
-              });
-            },
-          ),
+          buildPopupWidget(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 100),
@@ -137,5 +101,63 @@ class _PopupPageState extends State<PopupPage> {
         ],
       ),
     );
+  }
+
+  PopupWidget buildPopupWidget() {
+    return PopupWidget(
+      titles: getTitles(),
+      contents: contents,
+      contentBuilders: contentBuilders(),
+      itemBuilders: itemBuilders(),
+      onMenuSelect: (index) {
+        setState(() {
+          selectMenuIndex = index;
+        });
+      },
+      onContentSelect: (index) {
+        setState(() {
+          selectDataList[selectMenuIndex] = contents[selectMenuIndex][index];
+        });
+      },
+    );
+  }
+
+  List<WidgetBuilder> contentBuilders() {
+    return List.generate(titles.length, (menuIndex) {
+      return (context) {
+        return Column(
+          children: [
+            
+          ],
+        );
+      };
+    });
+  }
+
+  List<IndexedSelectedWidgetBuilder> itemBuilders() {
+    return List.generate(titles.length, (menuIndex) {
+      return (context, index, selected) {
+        Color color = selected ? LibraryColor.Primary : Colors.black87;
+        String content = contents[menuIndex][index];
+        return menuIndex.isEven
+            ? ListTile(
+                leading: Icon(Ionicons.watch, color: color),
+                title: Text(
+                  contents[menuIndex][index],
+                  style: TextStyle(color: color),
+                ),
+              )
+            : Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  '$content',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: selected ? LibraryColor.Primary : Colors.black54,
+                  ),
+                ),
+              );
+      };
+    });
   }
 }

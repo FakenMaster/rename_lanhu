@@ -9,11 +9,12 @@ typedef IndexedSelectedWidgetBuilder = Widget Function(
     BuildContext context, int index, bool selected);
 
 class PopupWidget extends PopupBaseWidget {
-  PopupWidget.listBuilder({
+  PopupWidget({
     Key key,
     @required List<String> titles,
     @required List<List<String>> contents,
     List<double> contentHeights,
+    List<WidgetBuilder> contentBuilders,
     List<IndexedSelectedWidgetBuilder> itemBuilders,
     MenuSelectCallback onMenuSelect,
     ContentSelectCallback onContentSelect,
@@ -21,13 +22,71 @@ class PopupWidget extends PopupBaseWidget {
     Color unselectMenuColor,
     Duration duration,
     double contentMarginBottom,
-  })  : assert(contentMarginBottom == null || contentMarginBottom >= 0),
+  })  : assert(contentBuilders != null || itemBuilders != null),
+        assert(contentMarginBottom == null || contentMarginBottom >= 0),
         super(
           key: key,
           titles: titles,
           contents: contents,
           contentHeights: contentHeights,
-          itemBuilders:itemBuilders,
+          contentBuilders: contentBuilders,
+          itemBuilders: itemBuilders,
+          onMenuSelect: onMenuSelect,
+          onContentSelect: onContentSelect,
+          selectMenuColor: selectMenuColor,
+          unselectMenuColor: unselectMenuColor,
+          duration: duration,
+          contentMarginBottom: contentMarginBottom,
+        );
+
+  PopupWidget.listBuilder({
+    Key key,
+    @required List<String> titles,
+    @required List<List<String>> contents,
+    List<double> contentHeights,
+    @required List<IndexedSelectedWidgetBuilder> itemBuilders,
+    MenuSelectCallback onMenuSelect,
+    ContentSelectCallback onContentSelect,
+    Color selectMenuColor,
+    Color unselectMenuColor,
+    Duration duration,
+    double contentMarginBottom,
+  })  : assert(itemBuilders != null),
+        assert(contentMarginBottom == null || contentMarginBottom >= 0),
+        super(
+          key: key,
+          titles: titles,
+          contents: contents,
+          contentHeights: contentHeights,
+          itemBuilders: itemBuilders,
+          onMenuSelect: onMenuSelect,
+          onContentSelect: onContentSelect,
+          selectMenuColor: selectMenuColor,
+          unselectMenuColor: unselectMenuColor,
+          duration: duration,
+          contentMarginBottom: contentMarginBottom,
+        );
+
+  PopupWidget.custom({
+    Key key,
+    @required List<String> titles,
+    @required List<List<String>> contents,
+    List<double> contentHeights,
+    @required List<WidgetBuilder> contentBuilders,
+    MenuSelectCallback onMenuSelect,
+    ContentSelectCallback onContentSelect,
+    Color selectMenuColor,
+    Color unselectMenuColor,
+    Duration duration,
+    double contentMarginBottom,
+  })  : assert(contentBuilders != null),
+        assert(contentMarginBottom == null || contentMarginBottom >= 0),
+        super(
+          key: key,
+          titles: titles,
+          contents: contents,
+          contentHeights: contentHeights,
+          contentBuilders: contentBuilders,
           onMenuSelect: onMenuSelect,
           onContentSelect: onContentSelect,
           selectMenuColor: selectMenuColor,
@@ -36,4 +95,3 @@ class PopupWidget extends PopupBaseWidget {
           contentMarginBottom: contentMarginBottom,
         );
 }
-
