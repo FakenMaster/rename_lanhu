@@ -125,10 +125,28 @@ class _PopupPageState extends State<PopupPage> {
   List<WidgetBuilder> contentBuilders() {
     return List.generate(titles.length, (menuIndex) {
       return (context) {
-        return Column(
-          children: [
-            
-          ],
+        return Material(
+                  child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Text(
+                  'Flutter Null Safety $menuIndex',
+                  style: TextStyle(color: Colors.red, fontSize: 30),
+                ),
+                Icon(
+                  Ionicons.airplane,
+                  color: LibraryColor.Primary,
+                  size: 40,
+                ),
+                Container(
+                  width: 300,
+                  height: 200,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
+          ),
         );
       };
     });
