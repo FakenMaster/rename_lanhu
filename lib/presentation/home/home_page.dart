@@ -9,6 +9,7 @@ import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_page.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_widget.dart';
 import 'package:rename_lanhu/presentation/popup/popup_test_page.dart';
+import 'package:rename_lanhu/presentation/popup/toast.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
 import 'package:time/time.dart';
 import 'package:dartz/dartz.dart' show Tuple3, Tuple3;
@@ -42,7 +43,6 @@ class _HomePageState extends State<HomePage> {
     Tuple3(Ionicons.terminal_outline, Ionicons.terminal, '按钮'),
     Tuple3(Ionicons.egg_outline, Ionicons.egg, 'stingy'),
     Tuple3(Ionicons.podium_outline, Ionicons.podium, '弹出下拉框'),
-
   ];
 
   PageController pageController;
@@ -765,6 +765,84 @@ class _AnimHeightTestState extends State<AnimHeightTest>
             '许多年之后，面对行刑队，奥雷良诺·布恩地亚上校将会回想起，他父亲带他去见识冰块的那个遥远的下午。那时的马贡多是一个有二十户人家的村落，用泥巴和芦苇盖的房屋就排列在一条河边。清澈的河水急急地流过，河心那些光滑、洁白的巨石，宛若史前动物留下的巨大的蛋。这块天地如此之新，许多东西尚未命名，提起它们时还须用手指指点点。每年到了三月光景，有一家衣衫褴褛的吉卜赛人家到村子附近来搭帐篷。他们吹笛击鼓，吵吵嚷嚷地向人们介绍最新的发明创造。最初他们带来了磁铁。一个胖乎乎的、留着拉碴胡子、长着一双雀爪般的手的吉卜赛人，自称叫墨尔基阿德斯，他把那玩意儿说成是马其顿的炼金术士们创造的第八奇迹，并当众作了一次惊人的表演。',
             '“地球是圆的，象一个橘子一样。”',
             '乌苏拉再也忍不住了。“你要发神经病，就一个人去发，”她吼叫着，“别拿你那吉卜赛式的怪想法往孩子们脑袋里灌！”霍塞·阿卡迪奥·布恩地亚听后无动于衷。他妻子一气之下把他的观象仪摔在地上打得粉碎，可是他没有被妻子的狂怒吓退，重新造了一架。他还把村里的男人都召集到自己的房间里，用谁也听不懂的理论向他们论证：只要一直朝东方航行，最后就能返回出发地点。全村的人都认为霍塞·阿卡迪奥·布恩地亚已经精神失常。这时，墨尔基阿德斯来了，这才把事情搞清楚，他当众夸赞霍塞·阿卡迪奥·布恩地亚的才智，说他仅凭天文估算便创造了一种理论。虽然这种理论在马贡多至今尚无人知晓，但已经为实践所证明。为了表示钦佩，他赠给霍塞·阿卡迪奥·布恩地亚一份礼品：一间炼金试验室。这对村子的未来产生了决定性的影响。',
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'topLeft', alignment: Alignment.topLeft);
+              },
+              child: Text('topLeft'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'topCenter', alignment: Alignment.topCenter);
+              },
+              child: Text('topCenter'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'topRight', alignment: Alignment.topRight);
+              },
+              child: Text('topRight'),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'centerLeft', alignment: Alignment.centerLeft);
+              },
+              child: Text('centerLeft'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'center', alignment: Alignment.center);
+              },
+              child: Text('center'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'centerRight', alignment: Alignment.centerRight);
+              },
+              child: Text('centerRight'),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'bottomLeft', alignment: Alignment.bottomLeft);
+              },
+              child: Text('bottomLeft'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'bottomCenter', alignment: Alignment.bottomCenter);
+              },
+              child: Text('bottomCenter'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Toast.show(context,
+                    message: 'bottomRight', alignment: Alignment.bottomRight);
+              },
+              child: Text('bottomRight'),
+            ),
           ],
         ),
       ],

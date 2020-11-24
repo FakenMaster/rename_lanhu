@@ -124,58 +124,57 @@ class _PopupPageState extends State<PopupPage> {
 
   List<WidgetBuilder> contentBuilders() {
     return List.generate(titles.length, (menuIndex) {
-      return (context) {
-        return Material(
-                  child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Text(
-                  'Flutter Null Safety $menuIndex',
-                  style: TextStyle(color: Colors.red, fontSize: 30),
-                ),
-                Icon(
-                  Ionicons.airplane,
-                  color: LibraryColor.Primary,
-                  size: 40,
-                ),
-                Container(
-                  width: 300,
-                  height: 200,
-                  color: Colors.blue,
-                ),
-              ],
+      return (context) => Material(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text(
+                    'Flutter Null Safety $menuIndex',
+                    style: TextStyle(color: Colors.red, fontSize: 30),
+                  ),
+                  Icon(
+                    Ionicons.airplane,
+                    color: LibraryColor.Primary,
+                    size: 40,
+                  ),
+                  Container(
+                    width: 300,
+                    height: 200,
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
-      };
+          );
     });
   }
 
   List<IndexedSelectedWidgetBuilder> itemBuilders() {
-    return List.generate(titles.length, (menuIndex) {
-      return (context, index, selected) {
-        Color color = selected ? LibraryColor.Primary : Colors.black87;
-        String content = contents[menuIndex][index];
-        return menuIndex.isEven
-            ? ListTile(
-                leading: Icon(Ionicons.watch, color: color),
-                title: Text(
-                  contents[menuIndex][index],
-                  style: TextStyle(color: color),
-                ),
-              )
-            : Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  '$content',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: selected ? LibraryColor.Primary : Colors.black54,
-                  ),
-                ),
-              );
-      };
-    });
+    return List.generate(
+        titles.length,
+        (menuIndex) => (context, index, selected) {
+              Color color = selected ? LibraryColor.Primary : Colors.black87;
+              String content = contents[menuIndex][index];
+              return menuIndex.isEven
+                  ? ListTile(
+                      leading: Icon(Ionicons.watch, color: color),
+                      title: Text(
+                        contents[menuIndex][index],
+                        style: TextStyle(color: color),
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        '$content',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color:
+                              selected ? LibraryColor.Primary : Colors.black54,
+                        ),
+                      ),
+                    );
+            });
   }
 }

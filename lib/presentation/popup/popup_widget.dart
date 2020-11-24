@@ -39,7 +39,7 @@ class PopupWidget extends PopupBaseWidget {
           contentMarginBottom: contentMarginBottom,
         );
 
-  PopupWidget.listBuilder({
+  PopupWidget.builer({
     Key key,
     @required List<String> titles,
     @required List<List<String>> contents,
