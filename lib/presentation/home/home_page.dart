@@ -8,6 +8,8 @@ import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_wid
 import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_page.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_widget.dart';
+import 'package:rename_lanhu/presentation/navigator2/book/book.dart';
+import 'package:rename_lanhu/presentation/navigator2/navigator2.dart';
 import 'package:rename_lanhu/presentation/popup/popup_test_page.dart';
 import 'package:rename_lanhu/presentation/popup/toast.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
@@ -116,7 +118,9 @@ class _HomePageState extends State<HomePage> {
                   //     child2Builder: (context) =>
                   //         MyText2(Random().nextInt(200))),
 
-                  PopupPage(),
+                  // PopupPage(),
+                  // Navigator2(),
+                  BooksPage(),
                 ],
               ),
             ),
