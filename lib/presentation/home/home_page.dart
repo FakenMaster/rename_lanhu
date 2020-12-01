@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_widget.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_widget.dart';
-import 'package:rename_lanhu/presentation/navigator2/book/book.dart';
+import 'package:rename_lanhu/presentation/navigator2/book.dart';
 import 'package:rename_lanhu/presentation/popup/toast.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
 import 'package:time/time.dart';
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
 
                   // PopupPage(),
                   // Navigator2(),
-                  BooksPage(),
+                  BooksApp(),
                 ],
               ),
             ),
