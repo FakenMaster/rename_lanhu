@@ -64,14 +64,14 @@ class _RenameFolderPageState extends State<RenameFolderPage>
                       ),
                       StreamBuilder<bool>(
                           stream:
-                              context.bloc<RenameFolderCubit>().renameStream,
+                              context.watch<RenameFolderCubit>().renameStream,
                           builder: (context, snapshot) {
                             return Center(
                               child: RaisedButton(
                                 onPressed: snapshot.data == true
                                     ? () {
                                         context
-                                            .bloc<RenameFolderCubit>()
+                                            .read<RenameFolderCubit>()
                                             .validate();
                                       }
                                     : null,
@@ -109,7 +109,7 @@ class _RenameFolderPageState extends State<RenameFolderPage>
                           FlatButton(
                             onPressed: () {
                               Navigator.pop(context);
-                              context.bloc<RenameFolderCubit>().rename();
+                              context.read<RenameFolderCubit>().rename();
                             },
                             child: Text('确定'),
                           ),

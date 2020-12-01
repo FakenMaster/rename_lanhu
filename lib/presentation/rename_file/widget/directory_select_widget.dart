@@ -35,7 +35,7 @@ class DirectorySelectWidget extends StatelessWidget {
         IconButton(
           iconSize: 40,
           onPressed: () =>
-              context.bloc<DirectorySelectCubit>().selectDirectory(spKey),
+              context.read<DirectorySelectCubit>().selectDirectory(spKey),
           icon: Icon(
             Ionicons.ellipsis_horizontal,
           ),

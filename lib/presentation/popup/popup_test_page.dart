@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
-import 'package:rename_lanhu/presentation/navigator2/navigator2.dart';
 import 'package:rename_lanhu/presentation/popup/popup_widget.dart';
 import 'package:stringx/stringx.dart';
 

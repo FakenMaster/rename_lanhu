@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rename_lanhu/infrasture/util/src/color.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:time/time.dart';
 
 /// 问题：当选择的index之后的内容不足以填满一屏时，滑动会先将index滑到顶部，再还原成填满一屏。效果很怪，如何fix？
 class TerminalPage extends StatefulWidget {

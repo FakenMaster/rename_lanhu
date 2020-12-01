@@ -43,30 +43,30 @@ const $DirectorySelectState = _$DirectorySelectStateTearOff();
 /// @nodoc
 mixin _$DirectorySelectState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(@nullable String directory),
-    @required Result fail(String spKey),
-    @required Result success(String spKey, @nullable String directory),
+  TResult when<TResult extends Object>({
+    @required TResult initial(@nullable String directory),
+    @required TResult fail(String spKey),
+    @required TResult success(String spKey, @nullable String directory),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(@nullable String directory),
-    Result fail(String spKey),
-    Result success(String spKey, @nullable String directory),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(@nullable String directory),
+    TResult fail(String spKey),
+    TResult success(String spKey, @nullable String directory),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result fail(_Fail value),
-    @required Result success(_Directory value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult fail(_Fail value),
+    @required TResult success(_Directory value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result fail(_Fail value),
-    Result success(_Directory value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult fail(_Fail value),
+    TResult success(_Directory value),
+    @required TResult orElse(),
   });
 }
 
@@ -146,10 +146,10 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(@nullable String directory),
-    @required Result fail(String spKey),
-    @required Result success(String spKey, @nullable String directory),
+  TResult when<TResult extends Object>({
+    @required TResult initial(@nullable String directory),
+    @required TResult fail(String spKey),
+    @required TResult success(String spKey, @nullable String directory),
   }) {
     assert(initial != null);
     assert(fail != null);
@@ -159,11 +159,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(@nullable String directory),
-    Result fail(String spKey),
-    Result success(String spKey, @nullable String directory),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(@nullable String directory),
+    TResult fail(String spKey),
+    TResult success(String spKey, @nullable String directory),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -174,10 +174,10 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result fail(_Fail value),
-    @required Result success(_Directory value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult fail(_Fail value),
+    @required TResult success(_Directory value),
   }) {
     assert(initial != null);
     assert(fail != null);
@@ -187,11 +187,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result fail(_Fail value),
-    Result success(_Directory value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult fail(_Fail value),
+    TResult success(_Directory value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -265,10 +265,10 @@ class _$_Fail implements _Fail {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(@nullable String directory),
-    @required Result fail(String spKey),
-    @required Result success(String spKey, @nullable String directory),
+  TResult when<TResult extends Object>({
+    @required TResult initial(@nullable String directory),
+    @required TResult fail(String spKey),
+    @required TResult success(String spKey, @nullable String directory),
   }) {
     assert(initial != null);
     assert(fail != null);
@@ -278,11 +278,11 @@ class _$_Fail implements _Fail {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(@nullable String directory),
-    Result fail(String spKey),
-    Result success(String spKey, @nullable String directory),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(@nullable String directory),
+    TResult fail(String spKey),
+    TResult success(String spKey, @nullable String directory),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (fail != null) {
@@ -293,10 +293,10 @@ class _$_Fail implements _Fail {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result fail(_Fail value),
-    @required Result success(_Directory value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult fail(_Fail value),
+    @required TResult success(_Directory value),
   }) {
     assert(initial != null);
     assert(fail != null);
@@ -306,11 +306,11 @@ class _$_Fail implements _Fail {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result fail(_Fail value),
-    Result success(_Directory value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult fail(_Fail value),
+    TResult success(_Directory value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (fail != null) {
@@ -396,10 +396,10 @@ class _$_Directory implements _Directory {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(@nullable String directory),
-    @required Result fail(String spKey),
-    @required Result success(String spKey, @nullable String directory),
+  TResult when<TResult extends Object>({
+    @required TResult initial(@nullable String directory),
+    @required TResult fail(String spKey),
+    @required TResult success(String spKey, @nullable String directory),
   }) {
     assert(initial != null);
     assert(fail != null);
@@ -409,11 +409,11 @@ class _$_Directory implements _Directory {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(@nullable String directory),
-    Result fail(String spKey),
-    Result success(String spKey, @nullable String directory),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(@nullable String directory),
+    TResult fail(String spKey),
+    TResult success(String spKey, @nullable String directory),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (success != null) {
@@ -424,10 +424,10 @@ class _$_Directory implements _Directory {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result fail(_Fail value),
-    @required Result success(_Directory value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult fail(_Fail value),
+    @required TResult success(_Directory value),
   }) {
     assert(initial != null);
     assert(fail != null);
@@ -437,11 +437,11 @@ class _$_Directory implements _Directory {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result fail(_Fail value),
-    Result success(_Directory value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult fail(_Fail value),
+    TResult success(_Directory value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (success != null) {

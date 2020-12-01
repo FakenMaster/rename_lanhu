@@ -13,6 +13,7 @@ class BooksPage extends StatefulWidget {
 }
 
 class _BooksPageState extends State<BooksPage> {
+  bool show404 = false;
   Book _selectedBook;
 
   List<Book> books = [
@@ -31,7 +32,9 @@ class _BooksPageState extends State<BooksPage> {
             onTapped: _handleBookTapped,
           ),
         ),
-        if (_selectedBook != null) BookDetailsPage(book: _selectedBook)
+        if(show404)
+        MaterialPage(key: Key('UnknownPage'),child: Text('404'))
+        else if (_selectedBook != null) BookDetailsPage(book: _selectedBook)
       ],
       onPopPage: (route, result) {
         print('返回: route: $route,result: $result');

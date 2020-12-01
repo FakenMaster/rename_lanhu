@@ -1,16 +1,10 @@
 import 'dart:math';
-import 'dart:ui' as ui;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_widget.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
-import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_page.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_widget.dart';
 import 'package:rename_lanhu/presentation/navigator2/book/book.dart';
-import 'package:rename_lanhu/presentation/navigator2/navigator2.dart';
-import 'package:rename_lanhu/presentation/popup/popup_test_page.dart';
 import 'package:rename_lanhu/presentation/popup/toast.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
 import 'package:time/time.dart';
@@ -19,8 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:rename_lanhu/application/rename_folder/cubit/rename_folder_cubit.dart';
-import 'package:rename_lanhu/infrasture/dependency_injection/injector.dart';
 import 'package:rename_lanhu/presentation/rename_folder/rename_folder_page.dart';
 import 'package:rename_lanhu/presentation/terminal/terminal_page.dart';
 import 'package:stringx/stringx.dart';
@@ -516,54 +508,6 @@ class _MyButtonState extends State<MyButton> {
 
   @override
   Widget build(BuildContext context) {
-    RenderBox renderBox;
-    Positioned positioned;
-    Stack stack;
-    Expanded expanded;
-    Scrollbar scrollbar;
-    RenderTransform renderTransform;
-    SliverGridParentData sliverGridParentData;
-    LeafRenderObjectWidget leafRenderObjectWidget;
-    Spacer spacer;
-    Divider divider;
-    Layer layer;
-    RenderSliver renderSliver;
-    Viewport viewport;
-    RenderParagraph renderParagraph;
-    TextField textField;
-    RenderTable renderTable;
-    RenderPadding renderPadding;
-    RenderView renderView;
-
-    SchedulerBinding schedulerBinding;
-    GestureBinding gestureBinding;
-    RendererBinding rendererBinding;
-    WidgetsBinding widgetsBinding;
-
-    PaintingBinding paintingBinding;
-    ServicesBinding servicesBinding;
-    SemanticsBinding semanticsBinding;
-    WidgetsFlutterBinding widgetsFlutterBinding;
-    //TestWidgetsFlutterBinding
-
-    PipelineOwner pipelineOwner;
-    BuildOwner buildOwner;
-
-    LayoutId layoutId;
-    InheritedWidget inheritedWidget;
-
-    StatelessWidget statelessWidget;
-
-    InheritedModel inheritedModel;
-    InheritedNotifier inheritedNotifier;
-
-    ui.Window window;
-
-    Animation animation;
-
-    TooltipTheme tooltipTheme;
-
-    CustomClipper customClipper;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: iconDatas

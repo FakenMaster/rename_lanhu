@@ -19,7 +19,7 @@ class _$RenameFolderStateTearOff {
   }
 
 // ignore: unused_element
-  _DirectoryStorage directoryStorage(String spKey, String directory) {
+  _DirectoryStorage directoryStorage(String spKey, @nullable String directory) {
     return _DirectoryStorage(
       spKey,
       directory,
@@ -28,7 +28,7 @@ class _$RenameFolderStateTearOff {
 
 // ignore: unused_element
   _SelectDirectorySuccess selectDirectorySuccess(
-      String spKey, String directory) {
+      String spKey, @nullable String directory) {
     return _SelectDirectorySuccess(
       spKey,
       directory,
@@ -65,46 +65,49 @@ const $RenameFolderState = _$RenameFolderStateTearOff();
 /// @nodoc
 mixin _$RenameFolderState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result directoryStorage(String spKey, String directory),
-    @required Result selectDirectorySuccess(String spKey, String directory),
-    @required Result valid(),
-    @required Result renameFail(String failMessage),
-    @required Result renameSuccess(),
-    @required Result renameProcessing(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required
+        TResult directoryStorage(String spKey, @nullable String directory),
+    @required
+        TResult selectDirectorySuccess(
+            String spKey, @nullable String directory),
+    @required TResult valid(),
+    @required TResult renameFail(String failMessage),
+    @required TResult renameSuccess(),
+    @required TResult renameProcessing(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result directoryStorage(String spKey, String directory),
-    Result selectDirectorySuccess(String spKey, String directory),
-    Result valid(),
-    Result renameFail(String failMessage),
-    Result renameSuccess(),
-    Result renameProcessing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult directoryStorage(String spKey, @nullable String directory),
+    TResult selectDirectorySuccess(String spKey, @nullable String directory),
+    TResult valid(),
+    TResult renameFail(String failMessage),
+    TResult renameSuccess(),
+    TResult renameProcessing(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result directoryStorage(_DirectoryStorage value),
-    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    @required Result valid(_Valid value),
-    @required Result renameFail(_RenameFail value),
-    @required Result renameSuccess(_RenameSuccess value),
-    @required Result renameProcessing(_RenameProcessing value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult directoryStorage(_DirectoryStorage value),
+    @required TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required TResult valid(_Valid value),
+    @required TResult renameFail(_RenameFail value),
+    @required TResult renameSuccess(_RenameSuccess value),
+    @required TResult renameProcessing(_RenameProcessing value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result directoryStorage(_DirectoryStorage value),
-    Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    Result valid(_Valid value),
-    Result renameFail(_RenameFail value),
-    Result renameSuccess(_RenameSuccess value),
-    Result renameProcessing(_RenameProcessing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult directoryStorage(_DirectoryStorage value),
+    TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    TResult valid(_Valid value),
+    TResult renameFail(_RenameFail value),
+    TResult renameSuccess(_RenameSuccess value),
+    TResult renameProcessing(_RenameProcessing value),
+    @required TResult orElse(),
   });
 }
 
@@ -160,14 +163,17 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result directoryStorage(String spKey, String directory),
-    @required Result selectDirectorySuccess(String spKey, String directory),
-    @required Result valid(),
-    @required Result renameFail(String failMessage),
-    @required Result renameSuccess(),
-    @required Result renameProcessing(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required
+        TResult directoryStorage(String spKey, @nullable String directory),
+    @required
+        TResult selectDirectorySuccess(
+            String spKey, @nullable String directory),
+    @required TResult valid(),
+    @required TResult renameFail(String failMessage),
+    @required TResult renameSuccess(),
+    @required TResult renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -181,15 +187,15 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result directoryStorage(String spKey, String directory),
-    Result selectDirectorySuccess(String spKey, String directory),
-    Result valid(),
-    Result renameFail(String failMessage),
-    Result renameSuccess(),
-    Result renameProcessing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult directoryStorage(String spKey, @nullable String directory),
+    TResult selectDirectorySuccess(String spKey, @nullable String directory),
+    TResult valid(),
+    TResult renameFail(String failMessage),
+    TResult renameSuccess(),
+    TResult renameProcessing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -200,14 +206,14 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result directoryStorage(_DirectoryStorage value),
-    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    @required Result valid(_Valid value),
-    @required Result renameFail(_RenameFail value),
-    @required Result renameSuccess(_RenameSuccess value),
-    @required Result renameProcessing(_RenameProcessing value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult directoryStorage(_DirectoryStorage value),
+    @required TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required TResult valid(_Valid value),
+    @required TResult renameFail(_RenameFail value),
+    @required TResult renameSuccess(_RenameSuccess value),
+    @required TResult renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -221,15 +227,15 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result directoryStorage(_DirectoryStorage value),
-    Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    Result valid(_Valid value),
-    Result renameFail(_RenameFail value),
-    Result renameSuccess(_RenameSuccess value),
-    Result renameProcessing(_RenameProcessing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult directoryStorage(_DirectoryStorage value),
+    TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    TResult valid(_Valid value),
+    TResult renameFail(_RenameFail value),
+    TResult renameSuccess(_RenameSuccess value),
+    TResult renameProcessing(_RenameProcessing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -248,7 +254,7 @@ abstract class _$DirectoryStorageCopyWith<$Res> {
   factory _$DirectoryStorageCopyWith(
           _DirectoryStorage value, $Res Function(_DirectoryStorage) then) =
       __$DirectoryStorageCopyWithImpl<$Res>;
-  $Res call({String spKey, String directory});
+  $Res call({String spKey, @nullable String directory});
 }
 
 /// @nodoc
@@ -276,13 +282,13 @@ class __$DirectoryStorageCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_DirectoryStorage implements _DirectoryStorage {
-  const _$_DirectoryStorage(this.spKey, this.directory)
-      : assert(spKey != null),
-        assert(directory != null);
+  const _$_DirectoryStorage(this.spKey, @nullable this.directory)
+      : assert(spKey != null);
 
   @override
   final String spKey;
   @override
+  @nullable
   final String directory;
 
   @override
@@ -313,14 +319,17 @@ class _$_DirectoryStorage implements _DirectoryStorage {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result directoryStorage(String spKey, String directory),
-    @required Result selectDirectorySuccess(String spKey, String directory),
-    @required Result valid(),
-    @required Result renameFail(String failMessage),
-    @required Result renameSuccess(),
-    @required Result renameProcessing(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required
+        TResult directoryStorage(String spKey, @nullable String directory),
+    @required
+        TResult selectDirectorySuccess(
+            String spKey, @nullable String directory),
+    @required TResult valid(),
+    @required TResult renameFail(String failMessage),
+    @required TResult renameSuccess(),
+    @required TResult renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -334,15 +343,15 @@ class _$_DirectoryStorage implements _DirectoryStorage {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result directoryStorage(String spKey, String directory),
-    Result selectDirectorySuccess(String spKey, String directory),
-    Result valid(),
-    Result renameFail(String failMessage),
-    Result renameSuccess(),
-    Result renameProcessing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult directoryStorage(String spKey, @nullable String directory),
+    TResult selectDirectorySuccess(String spKey, @nullable String directory),
+    TResult valid(),
+    TResult renameFail(String failMessage),
+    TResult renameSuccess(),
+    TResult renameProcessing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (directoryStorage != null) {
@@ -353,14 +362,14 @@ class _$_DirectoryStorage implements _DirectoryStorage {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result directoryStorage(_DirectoryStorage value),
-    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    @required Result valid(_Valid value),
-    @required Result renameFail(_RenameFail value),
-    @required Result renameSuccess(_RenameSuccess value),
-    @required Result renameProcessing(_RenameProcessing value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult directoryStorage(_DirectoryStorage value),
+    @required TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required TResult valid(_Valid value),
+    @required TResult renameFail(_RenameFail value),
+    @required TResult renameSuccess(_RenameSuccess value),
+    @required TResult renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -374,15 +383,15 @@ class _$_DirectoryStorage implements _DirectoryStorage {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result directoryStorage(_DirectoryStorage value),
-    Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    Result valid(_Valid value),
-    Result renameFail(_RenameFail value),
-    Result renameSuccess(_RenameSuccess value),
-    Result renameProcessing(_RenameProcessing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult directoryStorage(_DirectoryStorage value),
+    TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    TResult valid(_Valid value),
+    TResult renameFail(_RenameFail value),
+    TResult renameSuccess(_RenameSuccess value),
+    TResult renameProcessing(_RenameProcessing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (directoryStorage != null) {
@@ -393,10 +402,11 @@ class _$_DirectoryStorage implements _DirectoryStorage {
 }
 
 abstract class _DirectoryStorage implements RenameFolderState {
-  const factory _DirectoryStorage(String spKey, String directory) =
+  const factory _DirectoryStorage(String spKey, @nullable String directory) =
       _$_DirectoryStorage;
 
   String get spKey;
+  @nullable
   String get directory;
   _$DirectoryStorageCopyWith<_DirectoryStorage> get copyWith;
 }
@@ -406,7 +416,7 @@ abstract class _$SelectDirectorySuccessCopyWith<$Res> {
   factory _$SelectDirectorySuccessCopyWith(_SelectDirectorySuccess value,
           $Res Function(_SelectDirectorySuccess) then) =
       __$SelectDirectorySuccessCopyWithImpl<$Res>;
-  $Res call({String spKey, String directory});
+  $Res call({String spKey, @nullable String directory});
 }
 
 /// @nodoc
@@ -434,13 +444,13 @@ class __$SelectDirectorySuccessCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
-  const _$_SelectDirectorySuccess(this.spKey, this.directory)
-      : assert(spKey != null),
-        assert(directory != null);
+  const _$_SelectDirectorySuccess(this.spKey, @nullable this.directory)
+      : assert(spKey != null);
 
   @override
   final String spKey;
   @override
+  @nullable
   final String directory;
 
   @override
@@ -472,14 +482,17 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result directoryStorage(String spKey, String directory),
-    @required Result selectDirectorySuccess(String spKey, String directory),
-    @required Result valid(),
-    @required Result renameFail(String failMessage),
-    @required Result renameSuccess(),
-    @required Result renameProcessing(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required
+        TResult directoryStorage(String spKey, @nullable String directory),
+    @required
+        TResult selectDirectorySuccess(
+            String spKey, @nullable String directory),
+    @required TResult valid(),
+    @required TResult renameFail(String failMessage),
+    @required TResult renameSuccess(),
+    @required TResult renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -493,15 +506,15 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result directoryStorage(String spKey, String directory),
-    Result selectDirectorySuccess(String spKey, String directory),
-    Result valid(),
-    Result renameFail(String failMessage),
-    Result renameSuccess(),
-    Result renameProcessing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult directoryStorage(String spKey, @nullable String directory),
+    TResult selectDirectorySuccess(String spKey, @nullable String directory),
+    TResult valid(),
+    TResult renameFail(String failMessage),
+    TResult renameSuccess(),
+    TResult renameProcessing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (selectDirectorySuccess != null) {
@@ -512,14 +525,14 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result directoryStorage(_DirectoryStorage value),
-    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    @required Result valid(_Valid value),
-    @required Result renameFail(_RenameFail value),
-    @required Result renameSuccess(_RenameSuccess value),
-    @required Result renameProcessing(_RenameProcessing value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult directoryStorage(_DirectoryStorage value),
+    @required TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required TResult valid(_Valid value),
+    @required TResult renameFail(_RenameFail value),
+    @required TResult renameSuccess(_RenameSuccess value),
+    @required TResult renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -533,15 +546,15 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result directoryStorage(_DirectoryStorage value),
-    Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    Result valid(_Valid value),
-    Result renameFail(_RenameFail value),
-    Result renameSuccess(_RenameSuccess value),
-    Result renameProcessing(_RenameProcessing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult directoryStorage(_DirectoryStorage value),
+    TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    TResult valid(_Valid value),
+    TResult renameFail(_RenameFail value),
+    TResult renameSuccess(_RenameSuccess value),
+    TResult renameProcessing(_RenameProcessing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (selectDirectorySuccess != null) {
@@ -552,10 +565,11 @@ class _$_SelectDirectorySuccess implements _SelectDirectorySuccess {
 }
 
 abstract class _SelectDirectorySuccess implements RenameFolderState {
-  const factory _SelectDirectorySuccess(String spKey, String directory) =
-      _$_SelectDirectorySuccess;
+  const factory _SelectDirectorySuccess(
+      String spKey, @nullable String directory) = _$_SelectDirectorySuccess;
 
   String get spKey;
+  @nullable
   String get directory;
   _$SelectDirectorySuccessCopyWith<_SelectDirectorySuccess> get copyWith;
 }
@@ -595,14 +609,17 @@ class _$_Valid implements _Valid {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result directoryStorage(String spKey, String directory),
-    @required Result selectDirectorySuccess(String spKey, String directory),
-    @required Result valid(),
-    @required Result renameFail(String failMessage),
-    @required Result renameSuccess(),
-    @required Result renameProcessing(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required
+        TResult directoryStorage(String spKey, @nullable String directory),
+    @required
+        TResult selectDirectorySuccess(
+            String spKey, @nullable String directory),
+    @required TResult valid(),
+    @required TResult renameFail(String failMessage),
+    @required TResult renameSuccess(),
+    @required TResult renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -616,15 +633,15 @@ class _$_Valid implements _Valid {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result directoryStorage(String spKey, String directory),
-    Result selectDirectorySuccess(String spKey, String directory),
-    Result valid(),
-    Result renameFail(String failMessage),
-    Result renameSuccess(),
-    Result renameProcessing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult directoryStorage(String spKey, @nullable String directory),
+    TResult selectDirectorySuccess(String spKey, @nullable String directory),
+    TResult valid(),
+    TResult renameFail(String failMessage),
+    TResult renameSuccess(),
+    TResult renameProcessing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (valid != null) {
@@ -635,14 +652,14 @@ class _$_Valid implements _Valid {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result directoryStorage(_DirectoryStorage value),
-    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    @required Result valid(_Valid value),
-    @required Result renameFail(_RenameFail value),
-    @required Result renameSuccess(_RenameSuccess value),
-    @required Result renameProcessing(_RenameProcessing value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult directoryStorage(_DirectoryStorage value),
+    @required TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required TResult valid(_Valid value),
+    @required TResult renameFail(_RenameFail value),
+    @required TResult renameSuccess(_RenameSuccess value),
+    @required TResult renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -656,15 +673,15 @@ class _$_Valid implements _Valid {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result directoryStorage(_DirectoryStorage value),
-    Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    Result valid(_Valid value),
-    Result renameFail(_RenameFail value),
-    Result renameSuccess(_RenameSuccess value),
-    Result renameProcessing(_RenameProcessing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult directoryStorage(_DirectoryStorage value),
+    TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    TResult valid(_Valid value),
+    TResult renameFail(_RenameFail value),
+    TResult renameSuccess(_RenameSuccess value),
+    TResult renameProcessing(_RenameProcessing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (valid != null) {
@@ -738,14 +755,17 @@ class _$_RenameFail implements _RenameFail {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result directoryStorage(String spKey, String directory),
-    @required Result selectDirectorySuccess(String spKey, String directory),
-    @required Result valid(),
-    @required Result renameFail(String failMessage),
-    @required Result renameSuccess(),
-    @required Result renameProcessing(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required
+        TResult directoryStorage(String spKey, @nullable String directory),
+    @required
+        TResult selectDirectorySuccess(
+            String spKey, @nullable String directory),
+    @required TResult valid(),
+    @required TResult renameFail(String failMessage),
+    @required TResult renameSuccess(),
+    @required TResult renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -759,15 +779,15 @@ class _$_RenameFail implements _RenameFail {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result directoryStorage(String spKey, String directory),
-    Result selectDirectorySuccess(String spKey, String directory),
-    Result valid(),
-    Result renameFail(String failMessage),
-    Result renameSuccess(),
-    Result renameProcessing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult directoryStorage(String spKey, @nullable String directory),
+    TResult selectDirectorySuccess(String spKey, @nullable String directory),
+    TResult valid(),
+    TResult renameFail(String failMessage),
+    TResult renameSuccess(),
+    TResult renameProcessing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (renameFail != null) {
@@ -778,14 +798,14 @@ class _$_RenameFail implements _RenameFail {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result directoryStorage(_DirectoryStorage value),
-    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    @required Result valid(_Valid value),
-    @required Result renameFail(_RenameFail value),
-    @required Result renameSuccess(_RenameSuccess value),
-    @required Result renameProcessing(_RenameProcessing value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult directoryStorage(_DirectoryStorage value),
+    @required TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required TResult valid(_Valid value),
+    @required TResult renameFail(_RenameFail value),
+    @required TResult renameSuccess(_RenameSuccess value),
+    @required TResult renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -799,15 +819,15 @@ class _$_RenameFail implements _RenameFail {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result directoryStorage(_DirectoryStorage value),
-    Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    Result valid(_Valid value),
-    Result renameFail(_RenameFail value),
-    Result renameSuccess(_RenameSuccess value),
-    Result renameProcessing(_RenameProcessing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult directoryStorage(_DirectoryStorage value),
+    TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    TResult valid(_Valid value),
+    TResult renameFail(_RenameFail value),
+    TResult renameSuccess(_RenameSuccess value),
+    TResult renameProcessing(_RenameProcessing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (renameFail != null) {
@@ -862,14 +882,17 @@ class _$_RenameSuccess implements _RenameSuccess {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result directoryStorage(String spKey, String directory),
-    @required Result selectDirectorySuccess(String spKey, String directory),
-    @required Result valid(),
-    @required Result renameFail(String failMessage),
-    @required Result renameSuccess(),
-    @required Result renameProcessing(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required
+        TResult directoryStorage(String spKey, @nullable String directory),
+    @required
+        TResult selectDirectorySuccess(
+            String spKey, @nullable String directory),
+    @required TResult valid(),
+    @required TResult renameFail(String failMessage),
+    @required TResult renameSuccess(),
+    @required TResult renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -883,15 +906,15 @@ class _$_RenameSuccess implements _RenameSuccess {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result directoryStorage(String spKey, String directory),
-    Result selectDirectorySuccess(String spKey, String directory),
-    Result valid(),
-    Result renameFail(String failMessage),
-    Result renameSuccess(),
-    Result renameProcessing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult directoryStorage(String spKey, @nullable String directory),
+    TResult selectDirectorySuccess(String spKey, @nullable String directory),
+    TResult valid(),
+    TResult renameFail(String failMessage),
+    TResult renameSuccess(),
+    TResult renameProcessing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (renameSuccess != null) {
@@ -902,14 +925,14 @@ class _$_RenameSuccess implements _RenameSuccess {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result directoryStorage(_DirectoryStorage value),
-    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    @required Result valid(_Valid value),
-    @required Result renameFail(_RenameFail value),
-    @required Result renameSuccess(_RenameSuccess value),
-    @required Result renameProcessing(_RenameProcessing value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult directoryStorage(_DirectoryStorage value),
+    @required TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required TResult valid(_Valid value),
+    @required TResult renameFail(_RenameFail value),
+    @required TResult renameSuccess(_RenameSuccess value),
+    @required TResult renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -923,15 +946,15 @@ class _$_RenameSuccess implements _RenameSuccess {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result directoryStorage(_DirectoryStorage value),
-    Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    Result valid(_Valid value),
-    Result renameFail(_RenameFail value),
-    Result renameSuccess(_RenameSuccess value),
-    Result renameProcessing(_RenameProcessing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult directoryStorage(_DirectoryStorage value),
+    TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    TResult valid(_Valid value),
+    TResult renameFail(_RenameFail value),
+    TResult renameSuccess(_RenameSuccess value),
+    TResult renameProcessing(_RenameProcessing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (renameSuccess != null) {
@@ -983,14 +1006,17 @@ class _$_RenameProcessing implements _RenameProcessing {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result directoryStorage(String spKey, String directory),
-    @required Result selectDirectorySuccess(String spKey, String directory),
-    @required Result valid(),
-    @required Result renameFail(String failMessage),
-    @required Result renameSuccess(),
-    @required Result renameProcessing(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required
+        TResult directoryStorage(String spKey, @nullable String directory),
+    @required
+        TResult selectDirectorySuccess(
+            String spKey, @nullable String directory),
+    @required TResult valid(),
+    @required TResult renameFail(String failMessage),
+    @required TResult renameSuccess(),
+    @required TResult renameProcessing(),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -1004,15 +1030,15 @@ class _$_RenameProcessing implements _RenameProcessing {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result directoryStorage(String spKey, String directory),
-    Result selectDirectorySuccess(String spKey, String directory),
-    Result valid(),
-    Result renameFail(String failMessage),
-    Result renameSuccess(),
-    Result renameProcessing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult directoryStorage(String spKey, @nullable String directory),
+    TResult selectDirectorySuccess(String spKey, @nullable String directory),
+    TResult valid(),
+    TResult renameFail(String failMessage),
+    TResult renameSuccess(),
+    TResult renameProcessing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (renameProcessing != null) {
@@ -1023,14 +1049,14 @@ class _$_RenameProcessing implements _RenameProcessing {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result directoryStorage(_DirectoryStorage value),
-    @required Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    @required Result valid(_Valid value),
-    @required Result renameFail(_RenameFail value),
-    @required Result renameSuccess(_RenameSuccess value),
-    @required Result renameProcessing(_RenameProcessing value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult directoryStorage(_DirectoryStorage value),
+    @required TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    @required TResult valid(_Valid value),
+    @required TResult renameFail(_RenameFail value),
+    @required TResult renameSuccess(_RenameSuccess value),
+    @required TResult renameProcessing(_RenameProcessing value),
   }) {
     assert(initial != null);
     assert(directoryStorage != null);
@@ -1044,15 +1070,15 @@ class _$_RenameProcessing implements _RenameProcessing {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result directoryStorage(_DirectoryStorage value),
-    Result selectDirectorySuccess(_SelectDirectorySuccess value),
-    Result valid(_Valid value),
-    Result renameFail(_RenameFail value),
-    Result renameSuccess(_RenameSuccess value),
-    Result renameProcessing(_RenameProcessing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult directoryStorage(_DirectoryStorage value),
+    TResult selectDirectorySuccess(_SelectDirectorySuccess value),
+    TResult valid(_Valid value),
+    TResult renameFail(_RenameFail value),
+    TResult renameSuccess(_RenameSuccess value),
+    TResult renameProcessing(_RenameProcessing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (renameProcessing != null) {
