@@ -6,6 +6,6 @@ import 'package:rename_lanhu/presentation/navigator2/book.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-  // runApp(AppWidget());
-  nestedMain();
+  runApp(AppWidget());
+  // nestedMain();
 }

@@ -23,6 +23,7 @@ dependencies:
       path: packages/file_selector/file_selector_platform_interface
   create_material_color: ^0.0.2
   cupertino_icons: ^1.0.0
+  # dart_numerics: ^0.0.5
   dartz: ^0.9.2
   file_picker: ^2.0.11
   flushbar: ^1.10.4
@@ -43,7 +44,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: 
+  build_runner: null
   freezed: ^0.12.2
   injectable_generator: ^1.0.6
   scrollable_positioned_list: ^0.1.8
@@ -51,6 +52,5 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-
 
 scripts: derry.yaml

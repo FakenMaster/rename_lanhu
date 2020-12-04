@@ -1,10 +1,10 @@
+import 'dart:isolate';
 import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:rename_lanhu/application/drop_down_list/widget/dropdown_menu_widget.dart';
 import 'package:rename_lanhu/infrasture/util/util.dart';
 import 'package:rename_lanhu/presentation/dropdown_overlay/dropdown_overlay_widget.dart';
-import 'package:rename_lanhu/presentation/navigator2/book.dart';
 import 'package:rename_lanhu/presentation/popup/toast.dart';
 import 'package:rename_lanhu/presentation/rename_file/rename_file_page.dart';
 import 'package:time/time.dart';
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
 
                   // PopupPage(),
                   // Navigator2(),
-                  BooksApp(),
+                  // BooksApp(),
                 ],
               ),
             ),
@@ -642,7 +642,7 @@ class _AnimHeightTestState extends State<AnimHeightTest>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<Offset> offset;
-
+  int count = 0;
   @override
   void initState() {
     super.initState();
@@ -793,9 +793,60 @@ class _AnimHeightTestState extends State<AnimHeightTest>
             ),
           ],
         ),
+        SizedBox(
+          height: 20,
+        ),
+        RaisedButton(
+          onPressed: () {
+            // testYank();
+            testIsolate();
+          },
+          child: Text('新建耗时任务'),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        RaisedButton(
+          onPressed: () {
+            print('打印:${count++}');
+          },
+          child: Text('测试是否会被耗时任务阻塞'),
+        ),
       ],
     );
   }
+
+  testYank() async {
+    await Future.delayed(1.seconds);
+    print('开始耗时任务');
+
+    for (int i = 0; i < 1000000; i++) {
+      if (i % 10000 == 0) {
+        print(i);
+      }
+    }
+    print('耗时任务结束');
+  }
+
+  testIsolate() async {
+    ReceivePort receivePort = ReceivePort();
+    Isolate isolate = await Isolate.spawn(heavyTask, receivePort.sendPort);
+    receivePort.listen((message) {
+      print('$message');
+    });
+  }
+}
+
+void heavyTask(SendPort sendPort) {
+  int hashCode = Isolate.current.hashCode;
+  sendPort.send('$hashCode : 开始耗时任务');
+
+  for (int i = 0; i < 1000000; i++) {
+    if (i % 1000 == 0) {
+      sendPort.send('$hashCode : $i');
+    }
+  }
+  sendPort.send('$hashCode : 耗时任务结束');
 }
 
 class InheritedThemeTest extends StatelessWidget {
